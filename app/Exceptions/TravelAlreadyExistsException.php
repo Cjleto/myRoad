@@ -2,32 +2,15 @@
 
 namespace App\Exceptions;
 
-use Exception;
+use App\Exceptions\CustomException;
 
-class TravelAlreadyExistsException extends Exception
+class TravelAlreadyExistsException extends CustomException
 {
-    public function report ()
+
+    public function __construct ($message = 'Travel arleady exists', $code = 409)
     {
-        activity()
-            ->useLog('travelCreation')
-            ->withProperties(
-                [
-                    'level' => 'error',
-                    'exception' => $this->getMessage(),
-                    'request' => request()->path(),
-                ]
-            )
-            ->causedBy(auth()->user() ?? null)
-            ->log('Travel arleady exists');
+        parent::__construct($message, $code);
     }
 
-    public function render ($request)
-    {
-        return response()->json(
-            [
-                'message' => $this->getMessage(),
-            ],
-            409
-        );
-    }
+
 }

@@ -38,17 +38,12 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $e)
     {
 
+        // route model binding, force forrmat defined in custom exception
         if($e instanceof ModelNotFoundException)
         {
             $modelName = Str::title(class_basename($e->getModel()));
 
-            return $this->failure(new ModelNotFoundException("Does not exists any {$modelName} with the specified identificator"), 404);
-        }
-
-        if ($request->is('api/*')) {
-            $jsonResponse = parent::render($request, $e);
-
-            return $this->failure($e, $jsonResponse->getStatusCode());
+            throw new TravelNotFound("Does not exists any {$modelName} with the specified identificator", 404);
         }
 
         return parent::render($request, $e);

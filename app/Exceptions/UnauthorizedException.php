@@ -2,32 +2,14 @@
 
 namespace App\Exceptions;
 
-use App\Traits\ApiResponses;
-use Exception;
 
-class UnauthorizedException extends Exception
+class UnauthorizedException extends CustomException
 {
-    use ApiResponses;
-    public function report ()
+
+    public function __construct ($message = 'Unauthorized', $code = 401)
     {
-        activity()
-            ->withProperties(
-                [
-                    'level' => 'error',
-                    'exception' => $this->getMessage(),
-                ]
-            )
-            ->causedBy(auth()->user() ?? null)
-            ->log('Unauthorized');
+        parent::__construct($message, $code);
     }
 
-    public function render ($request)
-    {
-        return response()->json(
-            [
-                'message' => $this->getMessage(),
-            ],
-            403
-        );
-    }
+
 }

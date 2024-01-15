@@ -1,5 +1,7 @@
 <?php
 
+use App\Exceptions\CustomException;
+use App\Exceptions\RouteNotFound;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\TravelController;
@@ -28,6 +30,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 
 Route::fallback(function(){
-    return response()->json([
-        'message' => 'Page Not Found. If error persists, contact support'], 404);
+    throw new RouteNotFound('Page Not Found. If error persists, contact support', 404);
 });
