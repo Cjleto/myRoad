@@ -54,7 +54,7 @@ class TravelSeeder extends Seeder
                     'name' => $travelData['name'],
                     'description' => $travelData['description'],
                     'numberOfDays' => $travelData['numberOfDays'],
-                    'public' => TravelVisibilityEnum::PUBLIC
+                    'visibility' => TravelVisibilityEnum::PUBLIC
                 ]
             );
 

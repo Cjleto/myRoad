@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -14,22 +15,16 @@ class UsersSeeder extends Seeder
      */
     public function run(): void
     {
-        $adminRole = Role::where('name', config('myconstants.role.admin'))->first();
-        $editorRole = Role::where('name', config('myconstants.role.editor'))->first();
+        // create a user foreach roles
+        $roles = Role::all();
 
-        User::create([
-            'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => bcrypt('password'),
-            'roleId' => $adminRole->id,
-        ]);
-
-        User::create([
-            'name' => 'Editor User',
-            'email' => 'editor@example.com',
-            'password' => bcrypt('password'),
-            'roleId' => $editorRole->id,
-        ]);
-
+        foreach ($roles as $role) {
+            User::create([
+                'name' => Str::title($role->name) . ' User',
+                'email' => Str::lower($role->name) . '@example.com',
+                'password' => bcrypt('password'),
+                'roleId' => $role->id,
+            ]);
+        }
     }
 }

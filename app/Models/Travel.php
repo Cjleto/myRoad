@@ -19,14 +19,14 @@ class Travel extends Model
         'name',
         'description',
         'numberOfDays',
-        'public',
+        'visibility',
     ];
 
     protected $casts = [
-        'public' => TravelVisibilityEnum::class,
+        'visibility' => TravelVisibilityEnum::class,
         'numberOfDays' => 'integer',
     ];
-
+    public static $snakeAttributes = false;
     protected $appends = [
         'numberOfNight',
     ];
@@ -57,6 +57,7 @@ class Travel extends Model
     public function moods (): BelongsToMany
     {
         return $this->belongsToMany(Mood::class,'mood_travel', 'travelId','moodId')
-            ->withPivot('value');
+            ->withPivot('value')
+            ->withTimestamps();
     }
 }

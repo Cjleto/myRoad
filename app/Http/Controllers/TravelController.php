@@ -4,62 +4,52 @@ namespace App\Http\Controllers;
 
 use App\Models\Travel;
 use Illuminate\Http\Request;
+use App\Services\TravelService;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Cache\Store;
+use App\Http\Resources\TravelResource;
+use App\Http\Requests\StoreTravelRequest;
+use App\Http\Requests\UpdateTravelRequest;
+use Illuminate\Validation\UnauthorizedException;
 
 class TravelController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function __construct(private TravelService $travelService) {}
+
+    public function index ()
     {
-        //
+        return $this->success(TravelResource::collection(Travel::with('moods')->get()));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function store(StoreTravelRequest $request)
     {
-        //
+
+        /* if(!auth()->user()->tokenCan('can_create_travels')) {
+            return $this->failure(new UnauthorizedException('You are not authorized to create travels'), 403);
+        } */
+
+        $travel = $this->travelService->create($request);
+        $travel->load('moods');
+
+        return $this->success(new TravelResource($travel), 201);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Travel $travel)
     {
-        //
+        $travel->load('moods');
+        return $this->success(new TravelResource($travel));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Travel $travel)
+    public function update(UpdateTravelRequest $request, Travel $travel)
     {
-        //
+
+        $travel = $this->travelService->update($request, $travel);
+        $travel->load('moods');
+
+        return $this->success(new TravelResource($travel));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Travel $travel)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Travel $travel)
-    {
-        //
-    }
 }

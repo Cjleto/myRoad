@@ -12,6 +12,11 @@ class Mood extends Model
 
     protected $table ='moods';
 
+    protected $fillable = [
+        'name',
+        'active',
+    ];
+
     public function scopeActive(){
         return $this->where('active', '=', 'y');
     }

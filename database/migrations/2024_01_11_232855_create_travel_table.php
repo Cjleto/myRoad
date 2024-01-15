@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->integer('numberOfDays');
-            $table->string('public')->nullable();
+            $table->string('visibility')->nullable();
             $table->timestamps();
         });
     }
