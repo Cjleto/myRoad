@@ -4,9 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Str;
 
 class UsersSeeder extends Seeder
 {
@@ -20,8 +19,8 @@ class UsersSeeder extends Seeder
 
         foreach ($roles as $role) {
             User::create([
-                'name' => Str::title($role->name) . ' User',
-                'email' => Str::lower($role->name) . '@example.com',
+                'name' => Str::title($role->name).' User',
+                'email' => Str::lower($role->name).'@example.com',
                 'password' => bcrypt('password'),
                 'roleId' => $role->id,
             ]);

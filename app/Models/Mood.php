@@ -10,14 +10,15 @@ class Mood extends Model
 {
     use HasFactory, HasUuids;
 
-    protected $table ='moods';
+    protected $table = 'moods';
 
     protected $fillable = [
         'name',
         'active',
     ];
 
-    public function scopeActive(){
+    public function scopeActive()
+    {
         return $this->where('active', '=', 'y');
     }
 }

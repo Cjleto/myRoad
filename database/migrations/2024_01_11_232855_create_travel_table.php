@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->integer('numberOfDays');
             $table->string('visibility')->nullable();
+            $table->string('code')->unique();
             $table->timestamps();
         });
     }

@@ -17,8 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::fallback(function(){
+Route::fallback(function () {
     return response()->json([
         'message' => 'Page Not Found. If error persists, contact support'], 404);
 });

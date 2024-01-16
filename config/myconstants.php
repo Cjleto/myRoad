@@ -1,7 +1,9 @@
 <?php
 
-
 return [
+    'travels' => [
+        'unique_name' => false,
+    ],
     'initial_roles' => [
         'admin' => 'admin',
         'editor' => 'editor',
@@ -9,10 +11,10 @@ return [
     'initial_permissions' => [
         'admin' => [
             'can_create_travels',
-            'can_create_tours'
+            'can_create_tours',
         ],
         'editor' => [
-            'can_update_travels'
+            'can_update_travels',
         ],
     ],
     'initial_moods' => [
@@ -21,5 +23,8 @@ return [
         'history',
         'culture',
         'party',
-    ]
+    ],
+    'tours' => [
+        'paginate' => 2,
+    ],
 ];

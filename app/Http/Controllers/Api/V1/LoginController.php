@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Services\UserService;
 use App\Traits\ApiResponses;
@@ -9,7 +10,6 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-
     use ApiResponses;
 
     /**
@@ -17,9 +17,9 @@ class LoginController extends Controller
      */
     public function __invoke(LoginRequest $request, UserService $userService)
     {
-        if( !auth()->attempt($request->only('email', 'password')) ) {
+        if (! auth()->attempt($request->only('email', 'password'))) {
             return response()->json([
-                'message' => 'Invalid login details'
+                'message' => 'Invalid login details',
             ], 401);
         }
 
@@ -28,9 +28,8 @@ class LoginController extends Controller
         $token = $userService->newApiToken($user);
 
         $responseData = [
-            'user' => $user, // TODO replace with user resource
-            'token' => $token
-            ];
+            'token' => $token,
+        ];
 
         return $this->success($responseData, 200);
     }

@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Exceptions;
+
 use Exception;
-use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+/** @phpstan-consistent-constructor */
 
 class CustomException extends Exception
 {
-    public function render ($request)
+
+    public function render($request)
     {
 
         if ($request->is('api/*')) {
@@ -17,8 +19,7 @@ class CustomException extends Exception
                 'message' => $this->getMessage(),
             ];
 
-            if(config('app.debug'))
-            {
+            if (config('app.debug')) {
                 $data['file'] = $this->getFile();
                 $data['line'] = $this->getLine();
                 $data['trace'] = $this->getTrace();
@@ -32,7 +33,7 @@ class CustomException extends Exception
 
     }
 
-    public function report ()
+    public function report()
     {
         activity()
             ->useLog(class_basename($this))
@@ -45,5 +46,15 @@ class CustomException extends Exception
             )
             ->causedBy(auth()->user() ?? null)
             ->log($this->getMessage());
+    }
+
+    public static function unauthorized(string $message = 'You are not authorized to perform this action', int $code = 403)
+    {
+        return new self($message, $code);
+    }
+
+    public static function unprocessableContent(string $message = 'Bad request, something goes wrong', int $code = 422)
+    {
+        return new self($message, $code);
     }
 }

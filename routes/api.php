@@ -1,11 +1,9 @@
 <?php
 
-use App\Exceptions\CustomException;
 use App\Exceptions\RouteNotFound;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\TourController;
-use App\Http\Controllers\TravelController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\V1\LoginController;
+use App\Http\Controllers\Api\V1\TourController;
+use App\Http\Controllers\Api\V1\TravelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,16 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login', LoginController::class);
+Route::post('login', LoginController::class)->name('login');
 
 Route::middleware(['auth:sanctum'])->group(function () {
-   //Route::post('travels/store', [TravelController::class, 'store']);
-   Route::apiResource('travels', TravelController::class)->except(['destroy']);
-   Route::apiResource('tours', TourController::class)->except(['destroy']);
+    //Route::post('travels/store', [TravelController::class, 'store']);
+    Route::apiResource('travels', TravelController::class)->except(['destroy']);
+    Route::apiResource('tours', TourController::class)->except(['destroy']);
 
 });
 
+Route::get('travel/{travel:slug}/tours', [TourController::class, 'toursByTravelSlug']);
 
-Route::fallback(function(){
+Route::fallback(function () {
     throw new RouteNotFound('Page Not Found. If error persists, contact support', 404);
 });

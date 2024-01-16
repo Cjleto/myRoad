@@ -3,11 +3,10 @@
 namespace App\Http\Requests;
 
 use App\Enums\TravelVisibilityEnum;
-use App\Models\Travel;
+use App\Exceptions\CustomException;
 use App\Rules\MoodsExistsRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Illuminate\Validation\UnauthorizedException;
 
 class UpdateTravelRequest extends FormRequest
 {
@@ -54,13 +53,13 @@ class UpdateTravelRequest extends FormRequest
                 'array',
                 'min:1',
                 'max:1000',
-                new MoodsExistsRule(),
+                new MoodsExistsRule,
             ],
         ];
     }
 
     protected function failedAuthorization()
     {
-        throw new UnauthorizedException('You are not authorized to update travels', 403);
+        throw CustomException::unauthorized('You are not authorized to update travels');
     }
 }

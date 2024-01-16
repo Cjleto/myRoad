@@ -2,16 +2,14 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Mood;
-use App\Rules\MoodsExistsRule;
-use Illuminate\Validation\Rule;
 use App\Enums\TravelVisibilityEnum;
-use App\Exceptions\UnauthorizedException;
+use App\Exceptions\CustomException;
+use App\Rules\MoodsExistsRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreTravelRequest extends FormRequest
 {
-
     public function authorize(): bool
     {
         return auth()->user()->tokenCan('can_create_travels');
@@ -47,7 +45,7 @@ class StoreTravelRequest extends FormRequest
                 'array',
                 'min:1',
                 'max:1000',
-                new MoodsExistsRule(),
+                new MoodsExistsRule,
             ],
         ];
     }
@@ -55,12 +53,12 @@ class StoreTravelRequest extends FormRequest
     public function messages()
     {
         return [
-            'visibility.*' => 'The visibility field is required and must be one of: ' . implode(', ', TravelVisibilityEnum::getAllValues()),
+            'visibility.*' => 'The visibility field is required and must be one of: '.implode(', ', TravelVisibilityEnum::getAllValues()),
         ];
     }
 
     protected function failedAuthorization()
     {
-        throw new UnauthorizedException('You are not authorized to create travels');
+        throw CustomException::unauthorized('You are not authorized to create travels');
     }
 }

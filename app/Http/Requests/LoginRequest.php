@@ -3,13 +3,12 @@
 namespace App\Http\Requests;
 
 use App\Traits\ApiResponses;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 class LoginRequest extends FormRequest
 {
-
     use ApiResponses;
 
     /**
@@ -20,7 +19,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' =>'required|email',
+            'email' => 'required|email',
             'password' => 'required|string|min:8|max:20',
         ];
     }
@@ -34,6 +33,6 @@ class LoginRequest extends FormRequest
             'data'      => $validator->errors()
         ], 422)); */
 
-        return $this->validationFailure($validator);
+        $this->validationFailure($validator);
     }
 }

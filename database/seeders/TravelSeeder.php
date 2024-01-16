@@ -43,9 +43,6 @@ class TravelSeeder extends Seeder
             ],
         ];
 
-
-
-
         foreach ($travels as $travelData) {
             $travel = Travel::firstOrCreate(
                 ['id' => $travelData['id']],
@@ -54,13 +51,13 @@ class TravelSeeder extends Seeder
                     'name' => $travelData['name'],
                     'description' => $travelData['description'],
                     'numberOfDays' => $travelData['numberOfDays'],
-                    'visibility' => TravelVisibilityEnum::PUBLIC
+                    'visibility' => TravelVisibilityEnum::PUBLIC,
                 ]
             );
 
             $travel->moods()->sync([]);
 
-            foreach(Mood::active()->get() as $mood) {
+            foreach (Mood::active()->get() as $mood) {
                 $value = random_int(1, 10) * 10;
                 $travel->moods()->attach($mood->id, ['value' => $value]);
             }

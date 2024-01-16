@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
-use App\Models\Travel;
-use Illuminate\Http\Request;
-use App\Services\TravelService;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Contracts\Cache\Store;
-use App\Http\Resources\TravelResource;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTravelRequest;
 use App\Http\Requests\UpdateTravelRequest;
+use App\Http\Resources\TravelResource;
+use App\Models\Travel;
+use App\Services\TravelService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\UnauthorizedException;
 
 class TravelController extends Controller
 {
+    public function __construct(private TravelService $travelService)
+    {
+    }
 
-    public function __construct(private TravelService $travelService) {}
-
-    public function index ()
+    public function index()
     {
         return $this->success(TravelResource::collection(Travel::with('moods')->get()));
     }
@@ -36,10 +36,10 @@ class TravelController extends Controller
 
     }
 
-
     public function show(Travel $travel)
     {
         $travel->load('moods');
+
         return $this->success(new TravelResource($travel));
     }
 
@@ -51,5 +51,4 @@ class TravelController extends Controller
 
         return $this->success(new TravelResource($travel));
     }
-
 }

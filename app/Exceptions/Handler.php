@@ -2,15 +2,14 @@
 
 namespace App\Exceptions;
 
-use Throwable;
-use Illuminate\Support\Str;
 use App\Traits\ApiResponses;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Str;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
-
     use ApiResponses;
 
     /**
@@ -39,8 +38,7 @@ class Handler extends ExceptionHandler
     {
 
         // route model binding, force forrmat defined in custom exception
-        if($e instanceof ModelNotFoundException)
-        {
+        if ($e instanceof ModelNotFoundException) {
             $modelName = Str::title(class_basename($e->getModel()));
 
             throw new TravelNotFound("Does not exists any {$modelName} with the specified identificator", 404);
@@ -48,5 +46,4 @@ class Handler extends ExceptionHandler
 
         return parent::render($request, $e);
     }
-
 }
