@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\TravelVisibilityEnum;
 use App\Exceptions\TravelAlreadyExistsException;
 use App\Http\Requests\StoreTravelRequest;
 use App\Http\Requests\UpdateTravelRequest;
@@ -142,5 +143,10 @@ class TravelService extends BaseService
 
         return $code;
 
+    }
+
+    public static function checkPublic(Travel $travel): bool
+    {
+        return $travel->visibility === TravelVisibilityEnum::PUBLIC;
     }
 }

@@ -3,14 +3,12 @@
 namespace App\Http\Requests;
 
 use App\Enums\TravelVisibilityEnum;
-use App\Exceptions\CustomException;
 use App\Rules\MoodsExistsRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 class StoreTravelRequest extends FormRequest
 {
-
     public function rules(): array
     {
         return [

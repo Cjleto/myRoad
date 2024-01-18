@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Exceptions\CustomException;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTourRequest;
+use App\Http\Requests\TourListRequest;
+use App\Http\Resources\TourResource;
 use App\Models\Tour;
 use App\Models\Travel;
 use App\Services\TourService;
-use App\Exceptions\CustomException;
-use App\Http\Controllers\Controller;
-use App\Http\Resources\TourResource;
-use App\Http\Requests\TourListRequest;
-use App\Http\Requests\StoreTourRequest;
 
 class TourController extends Controller
 {
@@ -68,7 +68,7 @@ class TourController extends Controller
     public function store(StoreTourRequest $request)
     {
 
-        if(!auth()->user()->tokenCan('can_create_tours')) {
+        if (! auth()->user()->tokenCan('can_create_tours')) {
             return $this->failure(CustomException::unauthorized('You are not authorized to create tours'), 403);
         }
 

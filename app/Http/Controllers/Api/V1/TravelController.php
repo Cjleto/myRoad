@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\Travel;
-use App\Services\TravelService;
 use App\Exceptions\CustomException;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Resources\TravelResource;
 use App\Http\Requests\StoreTravelRequest;
 use App\Http\Requests\UpdateTravelRequest;
-use Illuminate\Validation\UnauthorizedException;
+use App\Http\Resources\TravelResource;
+use App\Models\Travel;
+use App\Services\TravelService;
 
 class TravelController extends Controller
 {
@@ -54,7 +52,7 @@ class TravelController extends Controller
     public function store(StoreTravelRequest $request)
     {
 
-        if(!auth()->user()->tokenCan('can_create_travels')) {
+        if (! auth()->user()->tokenCan('can_create_travels')) {
             return $this->failure(CustomException::unauthorized('You are not authorized to create travels'), 403);
         }
 
@@ -88,7 +86,7 @@ class TravelController extends Controller
     public function update(UpdateTravelRequest $request, Travel $travel)
     {
 
-        if(!auth()->user()->tokenCan('can_update_travels')) {
+        if (! auth()->user()->tokenCan('can_update_travels')) {
             return $this->failure(CustomException::unauthorized('You are not authorized to update travels'), 403);
         }
 
