@@ -5,10 +5,8 @@ namespace App\Exceptions;
 use Exception;
 
 /** @phpstan-consistent-constructor */
-
 class CustomException extends Exception
 {
-
     public function render($request)
     {
 

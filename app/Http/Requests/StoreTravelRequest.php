@@ -83,7 +83,7 @@ class StoreTravelRequest extends FormRequest
             ],
             'moods' => [
                 'description' => 'The moods of the travel',
-                'example' => '{"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}'
+                'example' => '{"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}',
             ],
         ];
     }

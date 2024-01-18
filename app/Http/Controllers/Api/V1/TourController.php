@@ -20,6 +20,7 @@ class TourController extends Controller
      * Get tours by travel slug
      *
      * @group Tour Endpoints
+     *
      * @authenticated
      *
      * @urlParam travel_slug required The slug of the travel. Example: united-arab-emirates-from-dubai-to-abu-dhabi
@@ -60,8 +61,8 @@ class TourController extends Controller
      * Store a new Tour
      *
      * @authenticated
-     * @group Tour Endpoints
      *
+     * @group Tour Endpoints
      */
     public function store(StoreTourRequest $request)
     {

@@ -28,6 +28,7 @@ class TravelController extends Controller
      * Create a new travel
      *
      * @authenticated
+     *
      * @group Travel Endpoints
      *
      * @bodyParam moods string required The moods of the travel. Example: {"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}
@@ -76,13 +77,13 @@ class TravelController extends Controller
      * Update a travel
      *
      * @authenticated
+     *
      * @group Travel Endpoints
      *
      * @urlParam id uuid required The ID of the travel.<br> Example: d408be33-aa6a-4c73-a2c8-58a70ab2ba4d
      *
      * @bodyParam moods string required The moods of the travel. Example: {"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}
-     *
-    */
+     */
     public function update(UpdateTravelRequest $request, Travel $travel)
     {
 

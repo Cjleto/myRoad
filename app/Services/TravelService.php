@@ -42,10 +42,10 @@ class TravelService extends BaseService
             DB::rollBack();
 
             activity()
-            ->useLog('travel-store')
-            ->causedBy(auth()->user())
-            ->withProperties(['attributes' => $request->all(), 'exception' => $e->getMessage()])
-            ->log('Error while creating travel');
+                ->useLog('travel-store')
+                ->causedBy(auth()->user())
+                ->withProperties(['attributes' => $request->all(), 'exception' => $e->getMessage()])
+                ->log('Error while creating travel');
 
             throw $e;
         }
@@ -79,10 +79,10 @@ class TravelService extends BaseService
             DB::rollBack();
 
             activity()
-            ->useLog('travel-update')
-            ->causedBy(auth()->user())
-            ->withProperties(['attributes' => $request->all(), 'exception' => $e->getMessage()])
-            ->log('Error while updating travel');
+                ->useLog('travel-update')
+                ->causedBy(auth()->user())
+                ->withProperties(['attributes' => $request->all(), 'exception' => $e->getMessage()])
+                ->log('Error while updating travel');
 
             throw $e;
         }
@@ -105,15 +105,15 @@ class TravelService extends BaseService
         }
 
         $travel = Travel::where('name', $data['name'])
-        ->first();
+            ->first();
 
         return boolval($travel);
 
     }
 
     /**
-    * Get fillable attributes from request
-    */
+     * Get fillable attributes from request
+     */
     private function getFillableAttributes(FormRequest $request)
     {
         $fillable = array_filter($request->validated(), function ($key) {

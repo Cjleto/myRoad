@@ -8,6 +8,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * @mixin \App\Models\Tour
+ *
  * @property mixed $price
  */
 class TourResource extends JsonResource
