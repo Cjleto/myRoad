@@ -16,6 +16,14 @@ class TourController extends Controller
     {
     }
 
+    /**
+     * Get tours by travel slug
+     *
+     * @group Tour Endpoints
+     * @authenticated
+     *
+     * @urlParam travel_slug required The slug of the travel. Example: united-arab-emirates-from-dubai-to-abu-dhabi
+     */
     public function toursByTravelSlug(Travel $travel, TourListRequest $request)
     {
 
@@ -37,7 +45,8 @@ class TourController extends Controller
             });
 
         $tours = $tours->orderBy('startingDate')
-            ->paginate(2);
+            ->paginate(config('myconstants.tours.paginate'))
+            ->withQueryString();
 
         return TourResource::collection($tours);
     }
@@ -47,6 +56,13 @@ class TourController extends Controller
         return TourResource::collection(Tour::latest()->get());
     }
 
+    /**
+     * Store a new Tour
+     *
+     * @authenticated
+     * @group Tour Endpoints
+     *
+     */
     public function store(StoreTourRequest $request)
     {
 

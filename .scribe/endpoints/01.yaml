@@ -10,7 +10,7 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Post Travel'
+      title: 'Store a new Travel'
       description: 'Create a new travel'
       authenticated: true
       custom: []
@@ -25,25 +25,25 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'Must be at least 2 characters. Must not be greater than 255 characters.'
+        description: 'The name of the travel. Must be at least 2 characters. Must not be greater than 255 characters.'
         required: true
-        example: txrai
+        example: 'Jordan 361'
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
       description:
         name: description
-        description: 'Must be at least 2 characters. Must not be greater than 2000 characters.'
+        description: 'The description of the travel. Must be at least 2 characters. Must not be greater than 2000 characters.'
         required: true
-        example: 'Laboriosam dolor ut reiciendis veritatis maxime alias in.'
+        example: 'Jordan 361°: the perfect tour to....'
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
       numberOfDays:
         name: numberOfDays
-        description: 'Must be at least 1. Must not be greater than 1000.'
+        description: 'The number of days of the travel. Must be at least 1. Must not be greater than 1000.'
         required: true
         example: 5
         type: integer
@@ -52,9 +52,9 @@ endpoints:
         custom: []
       visibility:
         name: visibility
-        description: ''
+        description: 'The visibility of the travel (public or private).'
         required: true
-        example: private
+        example: public
         type: string
         enumValues:
           - public
@@ -63,19 +63,19 @@ endpoints:
         custom: []
       moods:
         name: moods
-        description: 'Must have at least 1 items. Must not have more than 1000 items.'
+        description: 'The moods of the travel.'
         required: true
-        example: []
-        type: object
+        example: '{"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}'
+        type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         custom: []
     cleanBodyParameters:
-      name: txrai
-      description: 'Laboriosam dolor ut reiciendis veritatis maxime alias in.'
+      name: 'Jordan 361'
+      description: 'Jordan 361°: the perfect tour to....'
       numberOfDays: 5
-      visibility: private
-      moods: []
+      visibility: public
+      moods: '{"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}'
     fileParameters: []
     responses:
       -
@@ -104,7 +104,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 1dfEeZ3akgPDv8Vhac66b54'
+      - 'Bearer 4d1eVDahg3Pkab6Zfc5vE86'
     controller: null
     method: null
     route: null
@@ -119,7 +119,7 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'PATCH Travel'
+      title: 'Update a Travel'
       description: 'Update a travel'
       authenticated: true
       custom: []
@@ -132,153 +132,76 @@ endpoints:
         name: id
         description: 'uuid required The ID of the travel.<br>'
         required: false
-        example: 9b1b5239-ff84-4876-a83a-9213199bd50b
+        example: d408be33-aa6a-4c73-a2c8-58a70ab2ba4d
         type: string
         enumValues: []
         exampleWasSpecified: true
         custom: []
     cleanUrlParameters:
-      id: 9b1b5239-ff84-4876-a83a-9213199bd50b
+      id: d408be33-aa6a-4c73-a2c8-58a70ab2ba4d
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       name:
         name: name
-        description: 'The name of the tour.'
+        description: 'The name of the travel. Must be at least 2 characters. Must not be greater than 255 characters.'
         required: true
-        example: quisquam
+        example: 'Jordan 361'
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
       description:
         name: description
-        description: 'The detailed description of the tour.'
+        description: 'The description of the travel. Must be at least 2 characters. Must not be greater than 2000 characters.'
         required: true
-        example: 'Nobis velit iste possimus ratione officia saepe sed.'
+        example: 'Jordan 361°: the perfect tour to....'
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
       numberOfDays:
         name: numberOfDays
-        description: 'The number of days for the tour.'
+        description: 'The number of days of the travel. Must be at least 1. Must not be greater than 1000.'
         required: true
-        example: 6
+        example: 5
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
       visibility:
         name: visibility
-        description: 'The visibility of the tour (public or private).'
+        description: 'The visibility of the travel (public or private).'
         required: true
         example: public
+        type: string
+        enumValues:
+          - public
+          - private
+        exampleWasSpecified: false
+        custom: []
+      moods:
+        name: moods
+        description: 'The moods of the travel.'
+        required: true
+        example: '{"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}'
         type: string
         enumValues: []
         exampleWasSpecified: true
         custom: []
-      moods:
-        name: moods
-        description: 'An array of moods associated with the tour.'
-        required: true
-        example:
-          -
-            nature: 80
-            relax: 20
-            history: 90
-            culture: 10
-            party: 80
-        type: 'object[]'
-        enumValues: []
-        exampleWasSpecified: true
-        custom: []
-      'moods[].nature':
-        name: 'moods[].nature'
-        description: 'The nature mood value.'
-        required: true
-        example: 80
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        custom: []
-      'moods[].relax':
-        name: 'moods[].relax'
-        description: 'The relax mood value.'
-        required: true
-        example: 20
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        custom: []
-      'moods[].history':
-        name: 'moods[].history'
-        description: 'The history mood value.'
-        required: true
-        example: 90
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        custom: []
-      'moods[].culture':
-        name: 'moods[].culture'
-        description: 'The culture mood value.'
-        required: true
-        example: 10
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        custom: []
-      'moods[].party':
-        name: 'moods[].party'
-        description: 'The party mood value.'
-        required: true
-        example: 80
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        custom: []
     cleanBodyParameters:
-      name: quisquam
-      description: 'Nobis velit iste possimus ratione officia saepe sed.'
-      numberOfDays: 6
+      name: 'Jordan 361'
+      description: 'Jordan 361°: the perfect tour to....'
+      numberOfDays: 5
       visibility: public
-      moods:
-        -
-          nature: 80
-          relax: 20
-          history: 90
-          culture: 10
-          party: 80
+      moods: '{"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}'
     fileParameters: []
-    responses:
-      -
-        status: 201
-        content: |-
-          {
-          "data": {
-            "id": "9b1bff16-e089-41de-8d4f-9e87f9014139",
-            "name": "Jordan 360",
-            "slug": "jordan-360",
-            "description": "Jordan 360°: the perfect tour to....",
-            "numberOfDays": 8,
-            "numberOfNight": 7,
-            "moods": {
-                "nature": 80,
-                "relax": 20,
-                "history": 90,
-                "culture": 30,
-                "party": 10
-            }
-          }
-        headers: []
-        description: ''
-        custom: []
+    responses: []
     responseFields: []
     auth:
       - headers
       - Authorization
-      - 'Bearer 38hdgkeb6Zaaf6cvV45EDP1'
+      - 'Bearer kefEDPZVvdag68a1c6b453h'
     controller: null
     method: null
     route: null

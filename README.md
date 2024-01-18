@@ -13,12 +13,13 @@ the tour name is unique and it is composed by a country code IT, the firsts thre
 
 Segui questi passaggi per installare il progetto:
 
-1. Clona il repository: `git clone <URL del repository>`
-2. Installa le dipendenze: `composer install`
+1. Clona il repository: `git clone https://github.com/Cjleto/myRoad`
+2. Installa le dipendenze: `composer update`
 3. Copia il file `.env.example` in un nuovo file chiamato `.env` e modifica le variabili di ambiente come necessario
-4. Genera una chiave per l'applicazione: `php artisan key:generate`
-5. Esegui le migrazioni del database: `php artisan migrate`
-6. (Opzionale) Popola il database con dati di esempio: `php artisan db:seed`
+4. Avvia il container tramite sail `./vendor/bin/sail up`
+5. Esegui le migrazioni del database e i seeder iniziali: `./vendor/bin/sail artisan migrate:fresh --seed`
+6. Rigenera la doc api tramite il comando `./vendor/bin/sail artisan scribe:generate`
+7. Consulta la doc api generata al link `http://localhost:${APP_PORT}/docs`
 
 ## Utilizzo
 

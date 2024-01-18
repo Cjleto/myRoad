@@ -22,8 +22,10 @@ class LoginController extends Controller
      *
      * Authenticates a user and returns an API token
      * @unauthenticated
-     * @bodyParam email string required The email of the user.
-     * @bodyParam password string required The password of the user.
+     * @bodyParam email string required The email of the user. Example: admin@example.com
+     * @bodyParam password string required The password of the user. Example: password
+     *
+     * use editor@example.com and password for different permissions
      *
      * @response {
      *   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"

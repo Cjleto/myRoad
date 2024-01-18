@@ -22,4 +22,37 @@ class TourListRequest extends FormRequest
             'sortOrder' => 'in:asc,desc',
         ];
     }
+
+    /**
+     * scribe section
+     */
+    public function queryParameters(): array
+    {
+        return [
+            'priceFrom' => [
+                'description' => 'The minimum price of the tour',
+                'example' => 100,
+            ],
+            'priceTo' => [
+                'description' => 'The maximum price of the tour',
+                'example' => 10000,
+            ],
+            'dateFrom' => [
+                'description' => 'The minimum starting date of the tour',
+                'example' => '2024-01-01',
+            ],
+            'dateTo' => [
+                'description' => 'The maximum starting date of the tour',
+                'example' => '2024-12-31',
+            ],
+            'sortBy' => [
+                'description' => 'The field to sort by',
+                'example' => 'price',
+            ],
+            'sortOrder' => [
+                'description' => 'The order to sort by',
+                'example' => 'asc',
+            ],
+        ];
+    }
 }

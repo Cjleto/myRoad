@@ -60,4 +60,29 @@ class StoreTourRequest extends FormRequest
     {
         throw CustomException::unauthorized('You are not authorized to create tours');
     }
+
+    /**
+     * scribe section
+     */
+    public function bodyParameters()
+    {
+        return [
+            'travelId' => [
+                'description' => 'The id of the travel.',
+                'example' => 'cbf304ae-a335-43fa-9e56-811612dcb601',
+            ],
+            'startingDate' => [
+                'description' => 'The starting date of the tour.',
+                'example' => '2024-01-01',
+            ],
+            'endingDate' => [
+                'description' => 'The ending date of the tour.',
+                'example' => '2024-01-08',
+            ],
+            'price' => [
+                'description' => 'The price of the tour.',
+                'example' => '1000',
+            ],
+        ];
+    }
 }

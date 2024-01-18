@@ -61,4 +61,30 @@ class StoreTravelRequest extends FormRequest
     {
         throw CustomException::unauthorized('You are not authorized to create travels');
     }
+
+    public function bodyParameters()
+    {
+        return [
+            'name' => [
+                'description' => 'The name of the travel',
+                'example' => 'Jordan 361',
+            ],
+            'description' => [
+                'description' => 'The description of the travel',
+                'example' => 'Jordan 361°: the perfect tour to....',
+            ],
+            'numberOfDays' => [
+                'description' => 'The number of days of the travel',
+                'example' => 5,
+            ],
+            'visibility' => [
+                'description' => 'The visibility of the travel (public or private)',
+                'example' => 'public',
+            ],
+            'moods' => [
+                'description' => 'The moods of the travel',
+                'example' => '{"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}'
+            ],
+        ];
+    }
 }
