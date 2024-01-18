@@ -12,9 +12,9 @@ class LoginTest extends TestCase
      *
      * @return void
      */
-    public function testLoginWithCorrectCredentials()
+    public function test_login_with_correct_credentials()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create(['roleId' => 1]);
 
         $response = $this->post('/api/v1/login', [
             'email' => $user->email,
@@ -35,11 +35,16 @@ class LoginTest extends TestCase
      *
      * @return void
      */
-    public function testLoginWithIncorrectCredentials()
+    public function test_login_with_incorrect_credentials()
     {
-        $response = $this->post('/api/v1/login', [
+        $user = User::factory()->create([
             'email' => 'test@example.com',
             'password' => 'wrongpassword',
+        ]);
+
+        $response = $this->post('/api/v1/login', [
+            'email' => 'test@example.com',
+            'password' => 'password',
         ]);
 
         $response->assertStatus(401);

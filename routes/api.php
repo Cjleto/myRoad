@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', LoginController::class)->name('login');
 
-Route::middleware(['auth:sanctum'])->prefix('admin')->group(function () {
+Route::middleware(['auth:sanctum'])->prefix('admin')->name('admin.')->group(function () {
 
     Route::apiResource('travels', TravelController::class)->except(['destroy']);
     Route::apiResource('tours', TourController::class)->except(['destroy']);
