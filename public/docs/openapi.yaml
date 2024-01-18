@@ -59,7 +59,7 @@ paths:
                 - email
                 - password
       security: []
-  /api/v1/tours:
+  /api/v1/admin/tours:
     post:
       summary: 'Store a new Tour'
       operationId: storeANewTour
@@ -340,7 +340,7 @@ paths:
         required: true
         schema:
           type: string
-  /api/v1/travels:
+  /api/v1/admin/travels:
     post:
       summary: 'Store a new Travel'
       operationId: storeANewTravel
@@ -392,7 +392,7 @@ paths:
                 - numberOfDays
                 - visibility
                 - moods
-  '/api/v1/travels/{id}':
+  '/api/v1/admin/travels/{id}':
     put:
       summary: 'Update a Travel'
       operationId: updateATravel

@@ -10,10 +10,6 @@ use Illuminate\Validation\Rule;
 
 class StoreTravelRequest extends FormRequest
 {
-    public function authorize(): bool
-    {
-        return auth()->user()->tokenCan('can_create_travels');
-    }
 
     public function rules(): array
     {
@@ -55,11 +51,6 @@ class StoreTravelRequest extends FormRequest
         return [
             'visibility.*' => 'The visibility field is required and must be one of: '.implode(', ', TravelVisibilityEnum::getAllValues()),
         ];
-    }
-
-    protected function failedAuthorization()
-    {
-        throw CustomException::unauthorized('You are not authorized to create travels');
     }
 
     public function bodyParameters()

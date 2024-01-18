@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "MyRoad",
-        "_postman_id": "96759176-456b-4600-95ff-09cc97ab7b98",
+        "_postman_id": "07b6affa-9f71-4023-a846-a741ea95e7cb",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -74,9 +74,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/tours",
+                            "path": "api\/v1\/admin\/tours",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/tours"
+                            "raw": "{{baseUrl}}\/api\/v1\/admin\/tours"
                         },
                         "method": "POST",
                         "header": [
@@ -182,7 +182,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "57"
+                                    "value": "59"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -206,9 +206,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/travels",
+                            "path": "api\/v1\/admin\/travels",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/travels"
+                            "raw": "{{baseUrl}}\/api\/v1\/admin\/travels"
                         },
                         "method": "POST",
                         "header": [
@@ -241,9 +241,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/travels\/:id",
+                            "path": "api\/v1\/admin\/travels\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/travels\/:id",
+                            "raw": "{{baseUrl}}\/api\/v1\/admin\/travels\/:id",
                             "variable": [
                                 {
                                     "id": "id",

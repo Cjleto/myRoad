@@ -4,7 +4,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/travels
+    uri: api/v1/admin/travels
     metadata:
       groupName: 'Travel Endpoints'
       groupDescription: ''
@@ -104,7 +104,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 4d1eVDahg3Pkab6Zfc5vE86'
+      - 'Bearer VDeag4avkhf563db6Z1PE8c'
     controller: null
     method: null
     route: null
@@ -113,7 +113,7 @@ endpoints:
     httpMethods:
       - PUT
       - PATCH
-    uri: 'api/v1/travels/{id}'
+    uri: 'api/v1/admin/travels/{id}'
     metadata:
       groupName: 'Travel Endpoints'
       groupDescription: ''
@@ -201,7 +201,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer kefEDPZVvdag68a1c6b453h'
+      - 'Bearer dPD1354cv68a6VhEebakgfZ'
     controller: null
     method: null
     route: null

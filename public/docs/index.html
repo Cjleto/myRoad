@@ -83,8 +83,8 @@
                     <a href="#tour-endpoints">Tour Endpoints</a>
                 </li>
                                     <ul id="tocify-subheader-tour-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="tour-endpoints-POSTapi-v1-tours">
-                                <a href="#tour-endpoints-POSTapi-v1-tours">Store a new Tour</a>
+                                                    <li class="tocify-item level-2" data-unique="tour-endpoints-POSTapi-v1-admin-tours">
+                                <a href="#tour-endpoints-POSTapi-v1-admin-tours">Store a new Tour</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="tour-endpoints-GETapi-v1-travel--travel_slug--tours">
                                 <a href="#tour-endpoints-GETapi-v1-travel--travel_slug--tours">Get tours by travel slug</a>
@@ -96,11 +96,11 @@
                     <a href="#travel-endpoints">Travel Endpoints</a>
                 </li>
                                     <ul id="tocify-subheader-travel-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="travel-endpoints-POSTapi-v1-travels">
-                                <a href="#travel-endpoints-POSTapi-v1-travels">Store a new Travel</a>
+                                                    <li class="tocify-item level-2" data-unique="travel-endpoints-POSTapi-v1-admin-travels">
+                                <a href="#travel-endpoints-POSTapi-v1-admin-travels">Store a new Travel</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="travel-endpoints-PUTapi-v1-travels--id-">
-                                <a href="#travel-endpoints-PUTapi-v1-travels--id-">Update a Travel</a>
+                                                                                <li class="tocify-item level-2" data-unique="travel-endpoints-PUTapi-v1-admin-travels--id-">
+                                <a href="#travel-endpoints-PUTapi-v1-admin-travels--id-">Update a Travel</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -326,7 +326,7 @@ use editor@example.com and password for different permissions"
 
     
 
-                                <h2 id="tour-endpoints-POSTapi-v1-tours">Store a new Tour</h2>
+                                <h2 id="tour-endpoints-POSTapi-v1-admin-tours">Store a new Tour</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -334,13 +334,13 @@ use editor@example.com and password for different permissions"
 
 
 
-<span id="example-requests-POSTapi-v1-tours">
+<span id="example-requests-POSTapi-v1-admin-tours">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8009/api/v1/tours" \
+    "http://localhost:8009/api/v1/admin/tours" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -355,7 +355,7 @@ use editor@example.com and password for different permissions"
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8009/api/v1/tours"
+    "http://localhost:8009/api/v1/admin/tours"
 );
 
 const headers = {
@@ -380,7 +380,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8009/api/v1/tours';
+$url = 'http://localhost:8009/api/v1/admin/tours';
 $response = $client-&gt;post(
     $url,
     [
@@ -402,45 +402,45 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 </span>
 
-<span id="example-responses-POSTapi-v1-tours">
+<span id="example-responses-POSTapi-v1-admin-tours">
 </span>
-<span id="execution-results-POSTapi-v1-tours" hidden>
+<span id="execution-results-POSTapi-v1-admin-tours" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-v1-tours"></span>:
+                id="execution-response-status-POSTapi-v1-admin-tours"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-v1-tours"
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-admin-tours"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-v1-tours" hidden>
+<span id="execution-error-POSTapi-v1-admin-tours" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-v1-tours">
+    <pre><code id="execution-error-message-POSTapi-v1-admin-tours">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-v1-tours" data-method="POST"
-      data-path="api/v1/tours"
+<form id="form-POSTapi-v1-admin-tours" data-method="POST"
+      data-path="api/v1/admin/tours"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-tours', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-admin-tours', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-v1-tours"
-                    onclick="tryItOut('POSTapi-v1-tours');">Try it out ⚡
+                    id="btn-tryout-POSTapi-v1-admin-tours"
+                    onclick="tryItOut('POSTapi-v1-admin-tours');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-v1-tours"
-                    onclick="cancelTryOut('POSTapi-v1-tours');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-v1-admin-tours"
+                    onclick="cancelTryOut('POSTapi-v1-admin-tours');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-v1-tours"
+                    id="btn-executetryout-POSTapi-v1-admin-tours"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -448,7 +448,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/v1/tours</code></b>
+            <b><code>api/v1/admin/tours</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -456,7 +456,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-tours"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-admin-tours"
                value="Bearer {YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -467,7 +467,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-v1-tours"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-admin-tours"
                value="application/json"
                data-component="header">
     <br>
@@ -478,7 +478,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-v1-tours"
+                              name="Accept"                data-endpoint="POSTapi-v1-admin-tours"
                value="application/json"
                data-component="header">
     <br>
@@ -490,7 +490,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="travelId"                data-endpoint="POSTapi-v1-tours"
+                              name="travelId"                data-endpoint="POSTapi-v1-admin-tours"
                value="cbf304ae-a335-43fa-9e56-811612dcb601"
                data-component="body">
     <br>
@@ -501,7 +501,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="startingDate"                data-endpoint="POSTapi-v1-tours"
+                              name="startingDate"                data-endpoint="POSTapi-v1-admin-tours"
                value="2024-01-01"
                data-component="body">
     <br>
@@ -512,7 +512,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="endingDate"                data-endpoint="POSTapi-v1-tours"
+                              name="endingDate"                data-endpoint="POSTapi-v1-admin-tours"
                value="2024-01-08"
                data-component="body">
     <br>
@@ -523,7 +523,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="price"                data-endpoint="POSTapi-v1-tours"
+               step="any"               name="price"                data-endpoint="POSTapi-v1-admin-tours"
                value="1000"
                data-component="body">
     <br>
@@ -616,7 +616,7 @@ print_r(json_decode((string) $body));</code></pre></div>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 57
+x-ratelimit-remaining: 59
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -848,7 +848,7 @@ Must be one of:
 
     
 
-                                <h2 id="travel-endpoints-POSTapi-v1-travels">Store a new Travel</h2>
+                                <h2 id="travel-endpoints-POSTapi-v1-admin-travels">Store a new Travel</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -856,13 +856,13 @@ Must be one of:
 
 <p>Create a new travel</p>
 
-<span id="example-requests-POSTapi-v1-travels">
+<span id="example-requests-POSTapi-v1-admin-travels">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8009/api/v1/travels" \
+    "http://localhost:8009/api/v1/admin/travels" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -878,7 +878,7 @@ Must be one of:
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8009/api/v1/travels"
+    "http://localhost:8009/api/v1/admin/travels"
 );
 
 const headers = {
@@ -904,7 +904,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8009/api/v1/travels';
+$url = 'http://localhost:8009/api/v1/admin/travels';
 $response = $client-&gt;post(
     $url,
     [
@@ -927,7 +927,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 </span>
 
-<span id="example-responses-POSTapi-v1-travels">
+<span id="example-responses-POSTapi-v1-admin-travels">
             <blockquote>
             <p>Example response (201):</p>
         </blockquote>
@@ -951,43 +951,43 @@ print_r(json_decode((string) $body));</code></pre></div>
 }</code>
  </pre>
     </span>
-<span id="execution-results-POSTapi-v1-travels" hidden>
+<span id="execution-results-POSTapi-v1-admin-travels" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-v1-travels"></span>:
+                id="execution-response-status-POSTapi-v1-admin-travels"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-v1-travels"
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-admin-travels"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-v1-travels" hidden>
+<span id="execution-error-POSTapi-v1-admin-travels" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-v1-travels">
+    <pre><code id="execution-error-message-POSTapi-v1-admin-travels">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-v1-travels" data-method="POST"
-      data-path="api/v1/travels"
+<form id="form-POSTapi-v1-admin-travels" data-method="POST"
+      data-path="api/v1/admin/travels"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-travels', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-admin-travels', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-v1-travels"
-                    onclick="tryItOut('POSTapi-v1-travels');">Try it out ⚡
+                    id="btn-tryout-POSTapi-v1-admin-travels"
+                    onclick="tryItOut('POSTapi-v1-admin-travels');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-v1-travels"
-                    onclick="cancelTryOut('POSTapi-v1-travels');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-v1-admin-travels"
+                    onclick="cancelTryOut('POSTapi-v1-admin-travels');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-v1-travels"
+                    id="btn-executetryout-POSTapi-v1-admin-travels"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -995,7 +995,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/v1/travels</code></b>
+            <b><code>api/v1/admin/travels</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -1003,7 +1003,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-travels"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-admin-travels"
                value="Bearer {YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -1014,7 +1014,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-v1-travels"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-admin-travels"
                value="application/json"
                data-component="header">
     <br>
@@ -1025,7 +1025,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-v1-travels"
+                              name="Accept"                data-endpoint="POSTapi-v1-admin-travels"
                value="application/json"
                data-component="header">
     <br>
@@ -1037,7 +1037,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="name"                data-endpoint="POSTapi-v1-travels"
+                              name="name"                data-endpoint="POSTapi-v1-admin-travels"
                value="Jordan 361"
                data-component="body">
     <br>
@@ -1048,7 +1048,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="description"                data-endpoint="POSTapi-v1-travels"
+                              name="description"                data-endpoint="POSTapi-v1-admin-travels"
                value="Jordan 361°: the perfect tour to...."
                data-component="body">
     <br>
@@ -1059,7 +1059,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="numberOfDays"                data-endpoint="POSTapi-v1-travels"
+               step="any"               name="numberOfDays"                data-endpoint="POSTapi-v1-admin-travels"
                value="5"
                data-component="body">
     <br>
@@ -1070,7 +1070,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="visibility"                data-endpoint="POSTapi-v1-travels"
+                              name="visibility"                data-endpoint="POSTapi-v1-admin-travels"
                value="public"
                data-component="body">
     <br>
@@ -1083,7 +1083,7 @@ Must be one of:
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="moods"                data-endpoint="POSTapi-v1-travels"
+                              name="moods"                data-endpoint="POSTapi-v1-admin-travels"
                value="{"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}"
                data-component="body">
     <br>
@@ -1091,7 +1091,7 @@ Must be one of:
         </div>
         </form>
 
-                    <h2 id="travel-endpoints-PUTapi-v1-travels--id-">Update a Travel</h2>
+                    <h2 id="travel-endpoints-PUTapi-v1-admin-travels--id-">Update a Travel</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -1099,13 +1099,13 @@ Must be one of:
 
 <p>Update a travel</p>
 
-<span id="example-requests-PUTapi-v1-travels--id-">
+<span id="example-requests-PUTapi-v1-admin-travels--id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8009/api/v1/travels/d408be33-aa6a-4c73-a2c8-58a70ab2ba4d" \
+    "http://localhost:8009/api/v1/admin/travels/d408be33-aa6a-4c73-a2c8-58a70ab2ba4d" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -1121,7 +1121,7 @@ Must be one of:
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8009/api/v1/travels/d408be33-aa6a-4c73-a2c8-58a70ab2ba4d"
+    "http://localhost:8009/api/v1/admin/travels/d408be33-aa6a-4c73-a2c8-58a70ab2ba4d"
 );
 
 const headers = {
@@ -1147,7 +1147,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8009/api/v1/travels/d408be33-aa6a-4c73-a2c8-58a70ab2ba4d';
+$url = 'http://localhost:8009/api/v1/admin/travels/d408be33-aa6a-4c73-a2c8-58a70ab2ba4d';
 $response = $client-&gt;put(
     $url,
     [
@@ -1170,45 +1170,45 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 </span>
 
-<span id="example-responses-PUTapi-v1-travels--id-">
+<span id="example-responses-PUTapi-v1-admin-travels--id-">
 </span>
-<span id="execution-results-PUTapi-v1-travels--id-" hidden>
+<span id="execution-results-PUTapi-v1-admin-travels--id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-PUTapi-v1-travels--id-"></span>:
+                id="execution-response-status-PUTapi-v1-admin-travels--id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-v1-travels--id-"
+    <pre class="json"><code id="execution-response-content-PUTapi-v1-admin-travels--id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-PUTapi-v1-travels--id-" hidden>
+<span id="execution-error-PUTapi-v1-admin-travels--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-v1-travels--id-">
+    <pre><code id="execution-error-message-PUTapi-v1-admin-travels--id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-PUTapi-v1-travels--id-" data-method="PUT"
-      data-path="api/v1/travels/{id}"
+<form id="form-PUTapi-v1-admin-travels--id-" data-method="PUT"
+      data-path="api/v1/admin/travels/{id}"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-v1-travels--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-v1-admin-travels--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-v1-travels--id-"
-                    onclick="tryItOut('PUTapi-v1-travels--id-');">Try it out ⚡
+                    id="btn-tryout-PUTapi-v1-admin-travels--id-"
+                    onclick="tryItOut('PUTapi-v1-admin-travels--id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-v1-travels--id-"
-                    onclick="cancelTryOut('PUTapi-v1-travels--id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-PUTapi-v1-admin-travels--id-"
+                    onclick="cancelTryOut('PUTapi-v1-admin-travels--id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-v1-travels--id-"
+                    id="btn-executetryout-PUTapi-v1-admin-travels--id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -1216,11 +1216,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/v1/travels/{id}</code></b>
+            <b><code>api/v1/admin/travels/{id}</code></b>
         </p>
             <p>
             <small class="badge badge-purple">PATCH</small>
-            <b><code>api/v1/travels/{id}</code></b>
+            <b><code>api/v1/admin/travels/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -1228,7 +1228,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-v1-travels--id-"
+                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-v1-admin-travels--id-"
                value="Bearer {YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -1239,7 +1239,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PUTapi-v1-travels--id-"
+                              name="Content-Type"                data-endpoint="PUTapi-v1-admin-travels--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -1250,7 +1250,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PUTapi-v1-travels--id-"
+                              name="Accept"                data-endpoint="PUTapi-v1-admin-travels--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -1262,7 +1262,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="id"                data-endpoint="PUTapi-v1-travels--id-"
+                              name="id"                data-endpoint="PUTapi-v1-admin-travels--id-"
                value="d408be33-aa6a-4c73-a2c8-58a70ab2ba4d"
                data-component="url">
     <br>
@@ -1274,7 +1274,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="name"                data-endpoint="PUTapi-v1-travels--id-"
+                              name="name"                data-endpoint="PUTapi-v1-admin-travels--id-"
                value="Jordan 361"
                data-component="body">
     <br>
@@ -1285,7 +1285,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="description"                data-endpoint="PUTapi-v1-travels--id-"
+                              name="description"                data-endpoint="PUTapi-v1-admin-travels--id-"
                value="Jordan 361°: the perfect tour to...."
                data-component="body">
     <br>
@@ -1296,7 +1296,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="numberOfDays"                data-endpoint="PUTapi-v1-travels--id-"
+               step="any"               name="numberOfDays"                data-endpoint="PUTapi-v1-admin-travels--id-"
                value="5"
                data-component="body">
     <br>
@@ -1307,7 +1307,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="visibility"                data-endpoint="PUTapi-v1-travels--id-"
+                              name="visibility"                data-endpoint="PUTapi-v1-admin-travels--id-"
                value="public"
                data-component="body">
     <br>
@@ -1320,7 +1320,7 @@ Must be one of:
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="moods"                data-endpoint="PUTapi-v1-travels--id-"
+                              name="moods"                data-endpoint="PUTapi-v1-admin-travels--id-"
                value="{"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}"
                data-component="body">
     <br>

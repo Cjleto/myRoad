@@ -1,34 +1,34 @@
-assumptions
 
-the travel code is unique
-the travel unique name is handled by conf
 
-the tour name is unique and it is composed by a country code IT, the firsts three letters of the travel name and the starting tour date in YYYYMMDD format
+# myRoad test
 
-# <Nome del Progetto>
+Here my assumptions for the test
 
-<Una breve descrizione del tuo progetto>
+- the permission to update a travel is only for admin user
 
-## Installazione
+- the travel code is unique
+- the travel name is not unique
+    > *change conf by config('myconstants.travels.unique_name')*
 
-Segui questi passaggi per installare il progetto:
+- the tour name is unique and it is composed by a country code IT, the firsts three letters of the travel name and the starting tour date in YYYYMMDD format
 
-1. Clona il repository: `git clone https://github.com/Cjleto/myRoad`
-2. Installa le dipendenze: `composer update`
-3. Copia il file `.env.example` in un nuovo file chiamato `.env` e modifica le variabili di ambiente come necessario
-4. Avvia il container tramite sail `./vendor/bin/sail up`
-5. Esegui le migrazioni del database e i seeder iniziali: `./vendor/bin/sail artisan migrate:fresh --seed`
-6. Rigenera la doc api tramite il comando `./vendor/bin/sail artisan scribe:generate`
-7. Consulta la doc api generata al link `http://localhost:${APP_PORT}/docs`
+## Installation
 
-## Utilizzo
+Follow these steps to install the project:
 
-<Descrivi come utilizzare il tuo progetto. Ad esempio, potresti spiegare come eseguire il progetto localmente, come eseguire i test, o come utilizzare le varie funzionalità del tuo progetto.>
+1. Clone the repository: `git clone https://github.com/Cjleto/myRoad`
+2. Install dependencies: `composer update`
+3. Copy the `.env.example` file to a new file named `.env` and modify the environment variables as needed
+4. Start the container using sail: `./vendor/bin/sail up`
+5. Run database migrations and initial seeders: `./vendor/bin/sail artisan migrate:fresh --seed`
+6. Generate API documentation using the command: `./vendor/bin/sail artisan scribe:generate`
+7. Access the generated API documentation at `http://localhost:${APP_PORT}/docs`
+8. Run static code analysis: `sail php ./vendor/bin/phpstan analyse --memory-limit=2G`
+9. Check code style: `sail php ./vendor/bin/pint --test`
 
-## Contribuire
+## Usage
 
-<Se il tuo progetto è open source e accetti contributi, spiega come gli altri possono contribuire. Ad esempio, potresti spiegare quali tipi di contributi stai cercando, come suggerire miglioramenti o come inviare una pull request.>
+When app is running, go to `${APP_URL}\docs` to see the api documentation.
 
-## Licenza
+You can use its own interface to run api request, download the postman collection or openApi yaml
 
-<Il tuo progetto è sotto licenza? Se sì, specifica qui quale licenza stai utilizzando. Ad esempio, potresti dire "Questo progetto è concesso in licenza sotto la licenza MIT. Vedi il file LICENSE per i dettagli.">
