@@ -30,4 +30,4 @@ Route::get('travel/{travel:slug}/tours', [TourController::class, 'toursByTravelS
 
 Route::fallback(function () {
     throw new RouteNotFound('Page Not Found. If error persists, contact support', 404);
-});
+})->name('fallback');

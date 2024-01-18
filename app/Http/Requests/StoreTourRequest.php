@@ -10,9 +10,9 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreTourRequest extends FormRequest
 {
-    public function __construct(private TourService $tourService)
+    /* public function __construct(private TourService $tourService)
     {
-    }
+    } */
 
     /**
      * Determine if the user is authorized to make this request.
@@ -51,7 +51,7 @@ class StoreTourRequest extends FormRequest
     protected function passedValidation()
     {
         $travel = Travel::find($this->travelId);
-        if (! $this->tourService->validCreatingPeriod($travel, $this)) {
+        if (! (new TourService)->validCreatingPeriod($travel, $this)) {
             throw CustomException::unprocessableContent('The period of the tour must be the same as the travel: '.$travel->numberOfDays.' days, you given '.Carbon::parse($this->startingDate)->diffInDays(Carbon::parse($this->endingDate)).' days');
         }
     }

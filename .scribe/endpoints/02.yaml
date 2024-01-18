@@ -1,0 +1,193 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/tours
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      travelId:
+        name: travelId
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      startingDate:
+        name: startingDate
+        description: 'Must be a valid date in the format <code>Y-m-d</code>.'
+        required: true
+        example: '2024-01-17'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      endingDate:
+        name: endingDate
+        description: 'Must be a valid date in the format <code>Y-m-d</code>. Must be a date after <code>startingDate</code>.'
+        required: true
+        example: '2102-08-07'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      price:
+        name: price
+        description: 'Must be at least 1.'
+        required: true
+        example: 68
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      travelId: architecto
+      startingDate: '2024-01-17'
+      endingDate: '2102-08-07'
+      price: 68
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eZgE8D5VckfbP46d63a1vha'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/travel/{travel_slug}/tours'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      travel_slug:
+        name: travel_slug
+        description: 'The slug of the travel.'
+        required: true
+        example: 4f4bd032-e7d4-402a-bdf6-aaf6be240d53
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      travel_slug: 4f4bd032-e7d4-402a-bdf6-aaf6be240d53
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      priceFrom:
+        name: priceFrom
+        description: ''
+        required: false
+        example: 700.5396728
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      priceTo:
+        name: priceTo
+        description: ''
+        required: false
+        example: 955336.4
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      dateFrom:
+        name: dateFrom
+        description: 'Must be a valid date in the format <code>Y-m-d</code>.'
+        required: false
+        example: '2024-01-17'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      dateTo:
+        name: dateTo
+        description: 'Must be a valid date in the format <code>Y-m-d</code>.'
+        required: false
+        example: '2024-01-17'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      sortBy:
+        name: sortBy
+        description: ''
+        required: false
+        example: price
+        type: string
+        enumValues:
+          - price
+        exampleWasSpecified: false
+        custom: []
+      sortOrder:
+        name: sortOrder
+        description: ''
+        required: false
+        example: desc
+        type: string
+        enumValues:
+          - asc
+          - desc
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      priceFrom: 700.5396728
+      priceTo: 955336.4
+      dateFrom: '2024-01-17'
+      dateTo: '2024-01-17'
+      sortBy: price
+      sortOrder: desc
+    fileParameters: []
+    responses:
+      -
+        status: 404
+        content: '{"success":false,"message":"Does not exists any Travel with the specified identificator","file":"\/var\/www\/html\/app\/Exceptions\/Handler.php","line":44,"trace":[{"file":"\/var\/www\/html\/vendor\/nunomaduro\/collision\/src\/Adapters\/Laravel\/ExceptionHandler.php","line":54,"function":"render","class":"App\\Exceptions\\Handler","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Pipeline.php","line":51,"function":"render","class":"NunoMaduro\\Collision\\Adapters\\Laravel\\ExceptionHandler","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","line":188,"function":"handleException","class":"Illuminate\\Routing\\Pipeline","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Middleware\/ThrottleRequests.php","line":159,"function":"Illuminate\\Pipeline\\{closure}","class":"Illuminate\\Pipeline\\Pipeline","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Middleware\/ThrottleRequests.php","line":125,"function":"handleRequest","class":"Illuminate\\Routing\\Middleware\\ThrottleRequests","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Middleware\/ThrottleRequests.php","line":87,"function":"handleRequestUsingNamedLimiter","class":"Illuminate\\Routing\\Middleware\\ThrottleRequests","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","line":183,"function":"handle","class":"Illuminate\\Routing\\Middleware\\ThrottleRequests","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","line":119,"function":"Illuminate\\Pipeline\\{closure}","class":"Illuminate\\Pipeline\\Pipeline","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Router.php","line":805,"function":"then","class":"Illuminate\\Pipeline\\Pipeline","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Router.php","line":784,"function":"runRouteWithinStack","class":"Illuminate\\Routing\\Router","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Router.php","line":748,"function":"runRoute","class":"Illuminate\\Routing\\Router","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Router.php","line":737,"function":"dispatchToRoute","class":"Illuminate\\Routing\\Router","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Kernel.php","line":200,"function":"dispatch","class":"Illuminate\\Routing\\Router","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","line":144,"function":"Illuminate\\Foundation\\Http\\{closure}","class":"Illuminate\\Foundation\\Http\\Kernel","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/TransformsRequest.php","line":21,"function":"Illuminate\\Pipeline\\{closure}","class":"Illuminate\\Pipeline\\Pipeline","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/ConvertEmptyStringsToNull.php","line":31,"function":"handle","class":"Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","line":183,"function":"handle","class":"Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/TransformsRequest.php","line":21,"function":"Illuminate\\Pipeline\\{closure}","class":"Illuminate\\Pipeline\\Pipeline","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/TrimStrings.php","line":40,"function":"handle","class":"Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","line":183,"function":"handle","class":"Illuminate\\Foundation\\Http\\Middleware\\TrimStrings","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/ValidatePostSize.php","line":27,"function":"Illuminate\\Pipeline\\{closure}","class":"Illuminate\\Pipeline\\Pipeline","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","line":183,"function":"handle","class":"Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/PreventRequestsDuringMaintenance.php","line":99,"function":"Illuminate\\Pipeline\\{closure}","class":"Illuminate\\Pipeline\\Pipeline","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","line":183,"function":"handle","class":"Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Http\/Middleware\/HandleCors.php","line":62,"function":"Illuminate\\Pipeline\\{closure}","class":"Illuminate\\Pipeline\\Pipeline","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","line":183,"function":"handle","class":"Illuminate\\Http\\Middleware\\HandleCors","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Http\/Middleware\/TrustProxies.php","line":39,"function":"Illuminate\\Pipeline\\{closure}","class":"Illuminate\\Pipeline\\Pipeline","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","line":183,"function":"handle","class":"Illuminate\\Http\\Middleware\\TrustProxies","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","line":119,"function":"Illuminate\\Pipeline\\{closure}","class":"Illuminate\\Pipeline\\Pipeline","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Kernel.php","line":175,"function":"then","class":"Illuminate\\Pipeline\\Pipeline","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Kernel.php","line":144,"function":"sendRequestThroughRouter","class":"Illuminate\\Foundation\\Http\\Kernel","type":"->"},{"file":"\/var\/www\/html\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Strategies\/Responses\/ResponseCalls.php","line":300,"function":"handle","class":"Illuminate\\Foundation\\Http\\Kernel","type":"->"},{"file":"\/var\/www\/html\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Strategies\/Responses\/ResponseCalls.php","line":288,"function":"callLaravelOrLumenRoute","class":"Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls","type":"->"},{"file":"\/var\/www\/html\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Strategies\/Responses\/ResponseCalls.php","line":91,"function":"makeApiCall","class":"Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls","type":"->"},{"file":"\/var\/www\/html\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Strategies\/Responses\/ResponseCalls.php","line":44,"function":"makeResponseCall","class":"Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls","type":"->"},{"file":"\/var\/www\/html\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Strategies\/Responses\/ResponseCalls.php","line":35,"function":"makeResponseCallIfConditionsPass","class":"Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls","type":"->"},{"file":"\/var\/www\/html\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Extractor.php","line":236,"function":"__invoke","class":"Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls","type":"->"},{"file":"\/var\/www\/html\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Extractor.php","line":163,"function":"iterateThroughStrategies","class":"Knuckles\\Scribe\\Extracting\\Extractor","type":"->"},{"file":"\/var\/www\/html\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Extractor.php","line":95,"function":"fetchResponses","class":"Knuckles\\Scribe\\Extracting\\Extractor","type":"->"},{"file":"\/var\/www\/html\/vendor\/knuckleswtf\/scribe\/src\/GroupedEndpoints\/GroupedEndpointsFromApp.php","line":125,"function":"processRoute","class":"Knuckles\\Scribe\\Extracting\\Extractor","type":"->"},{"file":"\/var\/www\/html\/vendor\/knuckleswtf\/scribe\/src\/GroupedEndpoints\/GroupedEndpointsFromApp.php","line":72,"function":"extractEndpointsInfoFromLaravelApp","class":"Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp","type":"->"},{"file":"\/var\/www\/html\/vendor\/knuckleswtf\/scribe\/src\/GroupedEndpoints\/GroupedEndpointsFromApp.php","line":50,"function":"extractEndpointsInfoAndWriteToDisk","class":"Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp","type":"->"},{"file":"\/var\/www\/html\/vendor\/knuckleswtf\/scribe\/src\/Commands\/GenerateDocumentation.php","line":53,"function":"get","class":"Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Container\/BoundMethod.php","line":36,"function":"handle","class":"Knuckles\\Scribe\\Commands\\GenerateDocumentation","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Container\/Util.php","line":41,"function":"Illuminate\\Container\\{closure}","class":"Illuminate\\Container\\BoundMethod","type":"::"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Container\/BoundMethod.php","line":93,"function":"unwrapIfClosure","class":"Illuminate\\Container\\Util","type":"::"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Container\/BoundMethod.php","line":35,"function":"callBoundMethod","class":"Illuminate\\Container\\BoundMethod","type":"::"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Container\/Container.php","line":662,"function":"call","class":"Illuminate\\Container\\BoundMethod","type":"::"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Console\/Command.php","line":211,"function":"call","class":"Illuminate\\Container\\Container","type":"->"},{"file":"\/var\/www\/html\/vendor\/symfony\/console\/Command\/Command.php","line":326,"function":"execute","class":"Illuminate\\Console\\Command","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Console\/Command.php","line":180,"function":"run","class":"Symfony\\Component\\Console\\Command\\Command","type":"->"},{"file":"\/var\/www\/html\/vendor\/symfony\/console\/Application.php","line":1096,"function":"run","class":"Illuminate\\Console\\Command","type":"->"},{"file":"\/var\/www\/html\/vendor\/symfony\/console\/Application.php","line":324,"function":"doRunCommand","class":"Symfony\\Component\\Console\\Application","type":"->"},{"file":"\/var\/www\/html\/vendor\/symfony\/console\/Application.php","line":175,"function":"doRun","class":"Symfony\\Component\\Console\\Application","type":"->"},{"file":"\/var\/www\/html\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Console\/Kernel.php","line":201,"function":"run","class":"Symfony\\Component\\Console\\Application","type":"->"},{"file":"\/var\/www\/html\/artisan","line":35,"function":"handle","class":"Illuminate\\Foundation\\Console\\Kernel","type":"->"}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer cDb4PvdVkha316Z86ag5Eef'
+    controller: null
+    method: null
+    route: null
+    custom: []

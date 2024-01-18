@@ -8,14 +8,32 @@ use App\Services\UserService;
 use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
 
+/**
+ * @group Authentication
+ *
+ * APIs for user authentication
+ */
 class LoginController extends Controller
 {
     use ApiResponses;
 
-    /**
-     * Handle the incoming request.
+        /**
+     * Login
+     *
+     * Authenticates a user and returns an API token
+     * @unauthenticated
+     * @bodyParam email string required The email of the user.
+     * @bodyParam password string required The password of the user.
+     *
+     * @response {
+     *   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+     * }
+     *
+     * @response 401 {
+     *   "message": "Invalid login details"
+     * }
      */
-    public function __invoke(LoginRequest $request, UserService $userService)
+     public function __invoke(LoginRequest $request, UserService $userService)
     {
         if (! auth()->attempt($request->only('email', 'password'))) {
             return response()->json([
