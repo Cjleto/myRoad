@@ -29,12 +29,12 @@ return [
 
             // Include these routes even if they did not match the rules above.
             'include' => [
-                'travels.store', 'travels.update', 'tours.store', 'tours.index',
+                //
             ],
 
             // Exclude these routes even if they matched the rules above.
             'exclude' => [
-                'travels.index', 'travels.show', 'tours.index', 'fallback',
+                'admin.travels.index', 'admin.travels.show', 'admin.tours.index', 'fallback',
             ],
         ],
     ],
@@ -212,14 +212,14 @@ INTRO
             Strategies\UrlParameters\GetFromUrlParamTag::class,
         ],
         'queryParameters' => [
+            Strategies\QueryParameters\GetFromQueryParamAttribute::class,
             Strategies\QueryParameters\GetFromFormRequest::class,
             Strategies\QueryParameters\GetFromInlineValidator::class,
-            Strategies\QueryParameters\GetFromQueryParamAttribute::class,
             Strategies\QueryParameters\GetFromQueryParamTag::class,
         ],
         'headers' => [
-            Strategies\Headers\GetFromHeaderAttribute::class,
             Strategies\Headers\GetFromHeaderTag::class,
+            Strategies\Headers\GetFromHeaderAttribute::class,
             [
                 'override',
                 [

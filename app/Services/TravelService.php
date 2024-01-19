@@ -37,6 +37,12 @@ class TravelService extends BaseService
                 }
             }
 
+            if ($images = $request->file('images')) {
+                foreach ($images as $image) {
+                    $travel->addMedia($image)->toMediaCollection('images');
+                }
+            }
+
             DB::commit();
 
         } catch (\Exception $e) {
@@ -71,6 +77,13 @@ class TravelService extends BaseService
                     if ($mood) {
                         $travel->moods()->syncWithoutDetaching([$mood->id => ['value' => $moodValue]]);
                     }
+                }
+            }
+
+            if ($images = $request->file('images')) {
+                $travel->clearMediaCollection('images');
+                foreach ($images as $image) {
+                    $travel->addMedia($image)->toMediaCollection('images');
                 }
             }
 

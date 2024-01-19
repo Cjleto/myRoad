@@ -28,7 +28,7 @@ endpoints:
     bodyParameters:
       email:
         name: email
-        description: 'The email of the user.'
+        description: 'The email of the user.<br>Use editor/admin@example.com for different permissions<br>'
         required: true
         example: admin@example.com
         type: string
@@ -39,20 +39,14 @@ endpoints:
         name: password
         description: 'The password of the user.'
         required: true
-        example: |-
-          password
-
-          use editor@example.com and password for different permissions
+        example: password
         type: string
         enumValues: []
         exampleWasSpecified: true
         custom: []
     cleanBodyParameters:
       email: admin@example.com
-      password: |-
-        password
-
-        use editor@example.com and password for different permissions
+      password: password
     fileParameters: []
     responses:
       -

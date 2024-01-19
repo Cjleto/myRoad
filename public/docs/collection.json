@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "MyRoad",
-        "_postman_id": "07b6affa-9f71-4023-a846-a741ea95e7cb",
+        "_postman_id": "426c6608-f0cc-4440-b8a3-ee47edbe61fd",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -41,7 +41,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"admin@example.com\",\"password\":\"password\\n\\nuse editor@example.com and password for different permissions\"}"
+                            "raw": "{\"email\":\"admin@example.com\",\"password\":\"password\"}"
                         },
                         "description": "Authenticates a user and returns an API token",
                         "auth": {
@@ -95,7 +95,14 @@
                         },
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n   \"success\": true,\n   \"data\": {\n       \"id\": \"9b20f8e0-b615-4090-8702-e8bf7adedc82\",\n       \"travelId\": \"4f4bd032-e7d4-402a-bdf6-aaf6be240d53\",\n       \"name\": \"ITICE20211107\",\n       \"startingDate\": \"2021-11-07\",\n       \"endingDate\": \"2021-11-15\",\n       \"price\": 213\n   }\n}",
+                            "name": ""
+                        }
+                    ]
                 },
                 {
                     "name": "Get tours by travel slug",
@@ -167,30 +174,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "59"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
+                            "header": [],
                             "code": 200,
-                            "body": "{\"data\":[{\"id\":\"9b1ef570-7910-4cff-b26d-677da3fdd9f9\",\"travelId\":\"cbf304ae-a335-43fa-9e56-811612dcb601\",\"name\":\"ITUNI20240101\",\"startingDate\":\"2024-01-01\",\"endingDate\":\"2024-01-08\",\"price\":1000},{\"id\":\"90155d92-01e5-4c4b-a5a8-e24011fa8418\",\"travelId\":\"cbf304ae-a335-43fa-9e56-811612dcb601\",\"name\":\"ITUNI20240121\",\"startingDate\":\"2024-01-21\",\"endingDate\":\"2024-01-28\",\"price\":1799}],\"links\":{\"first\":\"http:\\\/\\\/localhost:8009\\\/api\\\/v1\\\/travel\\\/united-arab-emirates-from-dubai-to-abu-dhabi\\\/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=1\",\"last\":\"http:\\\/\\\/localhost:8009\\\/api\\\/v1\\\/travel\\\/united-arab-emirates-from-dubai-to-abu-dhabi\\\/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=2\",\"prev\":null,\"next\":\"http:\\\/\\\/localhost:8009\\\/api\\\/v1\\\/travel\\\/united-arab-emirates-from-dubai-to-abu-dhabi\\\/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=2\"},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":2,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost:8009\\\/api\\\/v1\\\/travel\\\/united-arab-emirates-from-dubai-to-abu-dhabi\\\/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=1\",\"label\":\"1\",\"active\":true},{\"url\":\"http:\\\/\\\/localhost:8009\\\/api\\\/v1\\\/travel\\\/united-arab-emirates-from-dubai-to-abu-dhabi\\\/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=2\",\"label\":\"2\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost:8009\\\/api\\\/v1\\\/travel\\\/united-arab-emirates-from-dubai-to-abu-dhabi\\\/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=2\",\"label\":\"Next &raquo;\",\"active\":false}],\"path\":\"http:\\\/\\\/localhost:8009\\\/api\\\/v1\\\/travel\\\/united-arab-emirates-from-dubai-to-abu-dhabi\\\/tours\",\"per_page\":2,\"to\":2,\"total\":4}}",
+                            "body": "{\n   \"data\": [\n       {\n           \"id\": \"7f0ff8cc-6b19-407e-9915-279ad76c0b5c\",\n           \"travelId\": \"cbf304ae-a335-43fa-9e56-811612dcb601\",\n           \"name\": \"ITUNI20240112\",\n           \"startingDate\": \"2024-01-12\",\n           \"endingDate\": \"2024-01-20\",\n           \"price\": 1899\n       },\n       {\n           \"id\": \"90155d92-01e5-4c4b-a5a8-e24011fa8418\",\n           \"travelId\": \"cbf304ae-a335-43fa-9e56-811612dcb601\",\n           \"name\": \"ITUNI20240121\",\n           \"startingDate\": \"2024-01-21\",\n           \"endingDate\": \"2024-01-28\",\n           \"price\": 1899\n       }\n   ],\n   \"links\": {\n       \"first\": \"http:\/\/localhost:8009\/api\/v1\/travel\/united-arab-emirates-from-dubai-to-abu-dhabi\/tours?sortBy=price&sortOrder=desc&priceFrom=10&page=1\",\n       \"last\": \"http:\/\/localhost:8009\/api\/v1\/travel\/united-arab-emirates-from-dubai-to-abu-dhabi\/tours?sortBy=price&sortOrder=desc&priceFrom=10&page=1\",\n       \"prev\": null,\n       \"next\": null\n   },\n   \"meta\": {\n       \"current_page\": 1,\n       \"from\": 1,\n       \"last_page\": 1,\n       \"links\": [\n           {\n               \"url\": null,\n               \"label\": \"&laquo; Previous\",\n               \"active\": false\n           },\n           {\n               \"url\": \"http:\/\/localhost:8009\/api\/v1\/travel\/united-arab-emirates-from-dubai-to-abu-dhabi\/tours?sortBy=price&sortOrder=desc&priceFrom=10&page=1\",\n               \"label\": \"1\",\n               \"active\": true\n           },\n           {\n               \"url\": null,\n               \"label\": \"Next &raquo;\",\n               \"active\": false\n           }\n       ],\n       \"path\": \"http:\/\/localhost:8009\/api\/v1\/travel\/united-arab-emirates-from-dubai-to-abu-dhabi\/tours\",\n       \"per_page\": 2,\n       \"to\": 2,\n       \"total\": 2\n   }\n}",
                             "name": ""
                         }
                     ]
@@ -223,7 +209,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"Jordan 361\",\"description\":\"Jordan 361\u00b0: the perfect tour to....\",\"numberOfDays\":5,\"visibility\":\"public\",\"moods\":\"{\\\"nature\\\": 80,\\\"relax\\\": 20,\\\"history\\\": 90,\\\"culture\\\": 30,\\\"party\\\": 10}\"}"
+                            "raw": "{\"name\":\"Jordan 361\",\"description\":\"Jordan 361\u00b0: the perfect tour to....\",\"numberOfDays\":5,\"visibility\":\"public\",\"moods\":\"{'nature': 80,'relax': 20,'history': 90,'culture': 30,'party': 10}\"}"
                         },
                         "description": "Create a new travel"
                     },
@@ -231,7 +217,7 @@
                         {
                             "header": [],
                             "code": 201,
-                            "body": "{\n\"data\": {\n  \"id\": \"9b1bff16-e089-41de-8d4f-9e87f9014139\",\n  \"name\": \"Jordan 360\",\n  \"slug\": \"jordan-360\",\n  \"description\": \"Jordan 360\u00b0: the perfect tour to....\",\n  \"numberOfDays\": 8,\n  \"numberOfNight\": 7,\n  \"moods\": {\n      \"nature\": 80,\n      \"relax\": 20,\n      \"history\": 90,\n      \"culture\": 30,\n      \"party\": 10\n  }\n}",
+                            "body": "{\n   \"success\": true,\n   \"data\": {\n     \"id\": \"9b20f41b-0c51-4cc1-aa08-5c076876b356\",\n     \"name\": \"new trrascve\",\n     \"slug\": \"new-trrascve-9\",\n     \"description\": \"new descriptrioin asdkj haskjdh jaksd\",\n     \"numberOfDays\": 4,\n     \"numberOfNight\": 3,\n     \"moods\": {\n       \"nature\": 80,\n       \"relax\": 20,\n       \"history\": 90,\n       \"culture\": 30,\n       \"party\": 10\n     },\n     \"images\": [{\n       \"url\": \"http:\/\/localhost:8009\/storage\/9\/Screenshot-2024-01-16-alle-13.01.46.png\",\n       \"name\": \"Screenshot 2024-01-16 alle 13.01.46\",\n       \"size\": 170087,\n       \"mime_type\": \"image\/png\"\n     }, {\n       \"url\": \"http:\/\/localhost:8009\/storage\/10\/Screenshot-2023-12-07-alle-16.10.03.png\",\n       \"name\": \"Screenshot 2023-12-07 alle 16.10.03\",\n       \"size\": 88690,\n       \"mime_type\": \"image\/png\"\n     }]\n   }\n}",
                             "name": ""
                         }
                     ]
@@ -266,11 +252,18 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"Jordan 361\",\"description\":\"Jordan 361\u00b0: the perfect tour to....\",\"numberOfDays\":5,\"visibility\":\"public\",\"moods\":\"{\\\"nature\\\": 80,\\\"relax\\\": 20,\\\"history\\\": 90,\\\"culture\\\": 30,\\\"party\\\": 10}\"}"
+                            "raw": "{\"name\":\"Jordan 361\",\"description\":\"Jordan 361\u00b0: the perfect tour to....\",\"numberOfDays\":5,\"visibility\":\"public\",\"moods\":\"{'nature': 80,'relax': 20,'history': 90,'culture': 30,'party': 10}\"}"
                         },
                         "description": "Update a travel"
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n   \"success\": true,\n   \"data\": {\n     \"id\": \"9b20f41b-0c51-4cc1-aa08-5c076876b356\",\n     \"name\": \"new trrascve\",\n     \"slug\": \"new-trrascve-9\",\n     \"description\": \"new descriptrioin asdkj haskjdh jaksd\",\n     \"numberOfDays\": 4,\n     \"numberOfNight\": 3,\n     \"moods\": {\n       \"nature\": 80,\n       \"relax\": 20,\n       \"history\": 90,\n       \"culture\": 30,\n       \"party\": 10\n     },\n     \"images\": [{\n       \"url\": \"http:\/\/localhost:8009\/storage\/9\/Screenshot-2024-01-16-alle-13.01.46.png\",\n       \"name\": \"Screenshot 2024-01-16 alle 13.01.46\",\n       \"size\": 170087,\n       \"mime_type\": \"image\/png\"\n     }, {\n       \"url\": \"http:\/\/localhost:8009\/storage\/10\/Screenshot-2023-12-07-alle-16.10.03.png\",\n       \"name\": \"Screenshot 2023-12-07 alle 16.10.03\",\n       \"size\": 88690,\n       \"mime_type\": \"image\/png\"\n     }]\n   }\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         }

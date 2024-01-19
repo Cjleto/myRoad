@@ -12,6 +12,7 @@ return [
         'admin' => [
             'can_create_travels',
             'can_create_tours',
+            'can_update_travels',
         ],
         'editor' => [
             'can_update_travels',

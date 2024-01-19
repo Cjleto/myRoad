@@ -67,37 +67,59 @@ endpoints:
         name: moods
         description: 'The moods of the travel.'
         required: true
-        example: '{"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}'
+        example: "{'nature': 80,'relax': 20,'history': 90,'culture': 30,'party': 10}"
         type: string
         enumValues: []
         exampleWasSpecified: true
+        custom: []
+      images:
+        name: images
+        description: 'List of file.'
+        required: false
+        example: null
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
       name: 'Jordan 361'
       description: 'Jordan 361°: the perfect tour to....'
       numberOfDays: 5
       visibility: public
-      moods: '{"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}'
+      moods: "{'nature': 80,'relax': 20,'history': 90,'culture': 30,'party': 10}"
     fileParameters: []
     responses:
       -
         status: 201
         content: |-
           {
-          "data": {
-            "id": "9b1bff16-e089-41de-8d4f-9e87f9014139",
-            "name": "Jordan 360",
-            "slug": "jordan-360",
-            "description": "Jordan 360°: the perfect tour to....",
-            "numberOfDays": 8,
-            "numberOfNight": 7,
-            "moods": {
-                "nature": 80,
-                "relax": 20,
-                "history": 90,
-                "culture": 30,
-                "party": 10
-            }
+             "success": true,
+             "data": {
+               "id": "9b20f41b-0c51-4cc1-aa08-5c076876b356",
+               "name": "new trrascve",
+               "slug": "new-trrascve-9",
+               "description": "new descriptrioin asdkj haskjdh jaksd",
+               "numberOfDays": 4,
+               "numberOfNight": 3,
+               "moods": {
+                 "nature": 80,
+                 "relax": 20,
+                 "history": 90,
+                 "culture": 30,
+                 "party": 10
+               },
+               "images": [{
+                 "url": "http://localhost:8009/storage/9/Screenshot-2024-01-16-alle-13.01.46.png",
+                 "name": "Screenshot 2024-01-16 alle 13.01.46",
+                 "size": 170087,
+                 "mime_type": "image/png"
+               }, {
+                 "url": "http://localhost:8009/storage/10/Screenshot-2023-12-07-alle-16.10.03.png",
+                 "name": "Screenshot 2023-12-07 alle 16.10.03",
+                 "size": 88690,
+                 "mime_type": "image/png"
+               }]
+             }
           }
         headers: []
         description: ''
@@ -106,7 +128,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer VDeag4avkhf563db6Z1PE8c'
+      - 'Bearer V5136ZPehb4DvdEfa8a6gck'
     controller: null
     method: null
     route: null
@@ -186,24 +208,68 @@ endpoints:
         name: moods
         description: 'The moods of the travel.'
         required: true
-        example: '{"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}'
+        example: "{'nature': 80,'relax': 20,'history': 90,'culture': 30,'party': 10}"
         type: string
         enumValues: []
         exampleWasSpecified: true
+        custom: []
+      images:
+        name: images
+        description: 'List of file. It will replace all the existing images'
+        required: false
+        example: null
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
       name: 'Jordan 361'
       description: 'Jordan 361°: the perfect tour to....'
       numberOfDays: 5
       visibility: public
-      moods: '{"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}'
+      moods: "{'nature': 80,'relax': 20,'history': 90,'culture': 30,'party': 10}"
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+             "success": true,
+             "data": {
+               "id": "9b20f41b-0c51-4cc1-aa08-5c076876b356",
+               "name": "new trrascve",
+               "slug": "new-trrascve-9",
+               "description": "new descriptrioin asdkj haskjdh jaksd",
+               "numberOfDays": 4,
+               "numberOfNight": 3,
+               "moods": {
+                 "nature": 80,
+                 "relax": 20,
+                 "history": 90,
+                 "culture": 30,
+                 "party": 10
+               },
+               "images": [{
+                 "url": "http://localhost:8009/storage/9/Screenshot-2024-01-16-alle-13.01.46.png",
+                 "name": "Screenshot 2024-01-16 alle 13.01.46",
+                 "size": 170087,
+                 "mime_type": "image/png"
+               }, {
+                 "url": "http://localhost:8009/storage/10/Screenshot-2023-12-07-alle-16.10.03.png",
+                 "name": "Screenshot 2023-12-07 alle 16.10.03",
+                 "size": 88690,
+                 "mime_type": "image/png"
+               }]
+             }
+          }
+        headers: []
+        description: ''
+        custom: []
     responseFields: []
     auth:
       - headers
       - Authorization
-      - 'Bearer dPD1354cv68a6VhEebakgfZ'
+      - 'Bearer bda45P3k1ZD6EafcVgvh86e'
     controller: null
     method: null
     route: null

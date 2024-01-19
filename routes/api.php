@@ -27,7 +27,8 @@ Route::middleware(['auth:sanctum'])->prefix('admin')->name('admin.')->group(func
 });
 
 Route::get('travel/{travel:slug}/tours', [TourController::class, 'toursByTravelSlug'])
-    ->middleware(['travel.is.public']);
+    ->middleware(['travel.is.public'])
+    ->name('tours_by_travel_slug');
 
 Route::fallback(function () {
     throw new RouteNotFound('Page Not Found. If error persists, contact support', 404);
