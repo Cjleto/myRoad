@@ -16,7 +16,7 @@ class LoginTest extends TestCase
     {
         $user = User::factory()->create(['roleId' => 1]);
 
-        $response = $this->post('/api/v1/login', [
+        $response = $this->post(route('login'), [
             'email' => $user->email,
             'password' => 'password',
         ]);
@@ -42,7 +42,7 @@ class LoginTest extends TestCase
             'password' => 'wrongpassword',
         ]);
 
-        $response = $this->post('/api/v1/login', [
+        $response = $this->post(route('login'), [
             'email' => 'test@example.com',
             'password' => 'password',
         ]);

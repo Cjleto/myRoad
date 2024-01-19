@@ -36,6 +36,7 @@ What seeders insert:
 - Travels from the sample file
 - Tours from the sample file
 > :bulb: Use one of the two usernames above to log in, password = 'password'.
+> :memo: Or create your own by artisan command ```sail artisan myroad:user-create```
 
 ## Utility 
 - Generate API documentation using the command: `./vendor/bin/sail artisan scribe:generate`
