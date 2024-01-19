@@ -18,7 +18,7 @@ class TravelController extends Controller
 
     public function index()
     {
-        return TravelResource::collection(Travel::with('moods')->paginate(1));
+        return TravelResource::collection(Travel::with('moods')->latest()->paginate(5));
     }
 
     /**
@@ -28,29 +28,46 @@ class TravelController extends Controller
      *
      * @authenticated
      *
+     * @header Content-Type multipart/form-data
+     *
      * @group Travel Endpoints
      *
-     * @bodyParam moods string required The moods of the travel. Example: {"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}
+     * @bodyParam moods string required The moods of the travel. Example: {'nature': 80,'relax': 20,'history': 90,'culture': 30,'party': 10}
+     * @bodyParam images file[] List of file. No-example
      *
      * @response 201 {
-     * "data": {
-     *   "id": "9b1bff16-e089-41de-8d4f-9e87f9014139",
-     *   "name": "Jordan 360",
-     *   "slug": "jordan-360",
-     *   "description": "Jordan 360°: the perfect tour to....",
-     *   "numberOfDays": 8,
-     *   "numberOfNight": 7,
-     *   "moods": {
-     *       "nature": 80,
-     *       "relax": 20,
-     *       "history": 90,
-     *       "culture": 30,
-     *       "party": 10
-     *   }
+     *    "success": true,
+     *    "data": {
+     *      "id": "9b20f41b-0c51-4cc1-aa08-5c076876b356",
+     *      "name": "new trrascve",
+     *      "slug": "new-trrascve-9",
+     *      "description": "new descriptrioin asdkj haskjdh jaksd",
+     *      "numberOfDays": 4,
+     *      "numberOfNight": 3,
+     *      "moods": {
+     *        "nature": 80,
+     *        "relax": 20,
+     *        "history": 90,
+     *        "culture": 30,
+     *        "party": 10
+     *      },
+     *      "images": [{
+     *        "url": "http://localhost:8009/storage/9/Screenshot-2024-01-16-alle-13.01.46.png",
+     *        "name": "Screenshot 2024-01-16 alle 13.01.46",
+     *        "size": 170087,
+     *        "mime_type": "image/png"
+     *      }, {
+     *        "url": "http://localhost:8009/storage/10/Screenshot-2023-12-07-alle-16.10.03.png",
+     *        "name": "Screenshot 2023-12-07 alle 16.10.03",
+     *        "size": 88690,
+     *        "mime_type": "image/png"
+     *      }]
+     *    }
      * }
      */
     public function store(StoreTravelRequest $request)
     {
+
 
         if (! auth()->user()->tokenCan('can_create_travels')) {
             return $this->failure(CustomException::unauthorized('You are not authorized to create travels'), 403);
@@ -81,7 +98,38 @@ class TravelController extends Controller
      *
      * @urlParam id uuid required The ID of the travel.<br> Example: d408be33-aa6a-4c73-a2c8-58a70ab2ba4d
      *
-     * @bodyParam moods string required The moods of the travel. Example: {"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}
+     * @bodyParam moods string required The moods of the travel. Example: {'nature': 80,'relax': 20,'history': 90,'culture': 30,'party': 10}
+     * @bodyParam images file[] List of file. It will replace all the existing images No-example
+     *
+     * @response 201 {
+     *    "success": true,
+     *    "data": {
+     *      "id": "9b20f41b-0c51-4cc1-aa08-5c076876b356",
+     *      "name": "new trrascve",
+     *      "slug": "new-trrascve-9",
+     *      "description": "new descriptrioin asdkj haskjdh jaksd",
+     *      "numberOfDays": 4,
+     *      "numberOfNight": 3,
+     *      "moods": {
+     *        "nature": 80,
+     *        "relax": 20,
+     *        "history": 90,
+     *        "culture": 30,
+     *        "party": 10
+     *      },
+     *      "images": [{
+     *        "url": "http://localhost:8009/storage/9/Screenshot-2024-01-16-alle-13.01.46.png",
+     *        "name": "Screenshot 2024-01-16 alle 13.01.46",
+     *        "size": 170087,
+     *        "mime_type": "image/png"
+     *      }, {
+     *        "url": "http://localhost:8009/storage/10/Screenshot-2023-12-07-alle-16.10.03.png",
+     *        "name": "Screenshot 2023-12-07 alle 16.10.03",
+     *        "size": 88690,
+     *        "mime_type": "image/png"
+     *      }]
+     *    }
+     * }
      */
     public function update(UpdateTravelRequest $request, Travel $travel)
     {

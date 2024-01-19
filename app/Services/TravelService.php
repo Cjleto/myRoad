@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 
 class TravelService extends BaseService
 {
+
     public function create(StoreTravelRequest $request): mixed
     {
 
@@ -34,6 +35,12 @@ class TravelService extends BaseService
                 $mood = Mood::where('name', $moodName)->first();
                 if ($mood) {
                     $travel->moods()->attach($mood->id, ['value' => $moodValue]);
+                }
+            }
+
+            if ($images = $request->file('images')) {
+                foreach ($images as $image) {
+                    $travel->addMedia($image)->toMediaCollection('images');
                 }
             }
 
@@ -71,6 +78,13 @@ class TravelService extends BaseService
                     if ($mood) {
                         $travel->moods()->syncWithoutDetaching([$mood->id => ['value' => $moodValue]]);
                     }
+                }
+            }
+
+            if ($images = $request->file('images')) {
+                $travel->clearMediaCollection('images');
+                foreach ($images as $image) {
+                    $travel->addMedia($image)->toMediaCollection('images');
                 }
             }
 

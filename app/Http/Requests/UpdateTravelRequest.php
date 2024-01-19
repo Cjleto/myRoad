@@ -55,12 +55,24 @@ class UpdateTravelRequest extends FormRequest
                 'max:1000',
                 new MoodsExistsRule,
             ],
+            'images.*' => [
+                'nullable',
+                'file'
+            ],
         ];
     }
 
     protected function failedAuthorization()
     {
         throw CustomException::unauthorized('You are not authorized to update travels');
+    }
+
+    public function prepareForValidation()
+    {
+        // check format of moods and force to array
+        $this->merge([
+            'moods' => json_decode(str_replace("'","\"",$this->moods), true, 512, JSON_THROW_ON_ERROR),
+        ]);
     }
 
     public function bodyParameters()

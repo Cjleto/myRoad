@@ -13,7 +13,7 @@ use Laravel\Sanctum\Sanctum;
 use Illuminate\Support\Facades\DB;
 use App\Enums\TravelVisibilityEnum;
 
-class TourControllerTest extends TestCase
+class TourTest extends TestCase
 {
 
     /**
@@ -60,7 +60,7 @@ class TourControllerTest extends TestCase
     }
 
     /** @test */
-    public function test_user_without_permission_cannot_create_tour(): void
+    public function user_without_permission_cannot_create_tour(): void
     {
         Sanctum::actingAs(
             User::factory()->create(),
@@ -88,7 +88,33 @@ class TourControllerTest extends TestCase
     }
 
     /** @test */
-    public function test_tours_by_travel_slug_return_correct_data(): void
+    public function tours_by_travel_slug_return_only_active_travels(): void
+    {
+        $travel = Travel::factory()->create(['visibility' => TravelVisibilityEnum::PUBLIC]);
+        $tour = Tour::factory()->create(['travelId' => $travel->id, 'price' => 11111111]);
+
+        $response = $this->get(route('tours_by_travel_slug', [$travel]));
+
+        $response->assertStatus(200)
+        ->assertJsonCount(1, 'data')
+        ->assertJsonFragment([
+            'id' => $tour->id,
+            'travelId' => $travel->id,
+            'price' => 11111111,
+        ]);
+
+        $travel->update(['visibility' => TravelVisibilityEnum::PRIVATE]);
+
+        $response = $this->get(route('tours_by_travel_slug', [$travel]));
+
+        $response->assertStatus(403)
+            ->assertJson([
+                'message' => 'Travel is not public',
+            ]);
+    }
+
+    /** @test */
+    public function tours_by_travel_slug_return_correct_data(): void
     {
         $travel = Travel::factory()->create(['visibility' => TravelVisibilityEnum::PUBLIC]);
         $tour = Tour::factory()->create(['travelId' => $travel->id, 'price' => 11111111]);
@@ -105,7 +131,7 @@ class TourControllerTest extends TestCase
     }
 
     /** @test */
-    public function test_tours_by_travel_slug_with_price_from_filter(): void
+    public function tours_by_travel_slug_with_price_from_filter(): void
     {
         $travel = Travel::factory()->create(['visibility' => TravelVisibilityEnum::PUBLIC]);
         $tour = Tour::factory()->create(['travelId' => $travel->id, 'price' => 100]);
@@ -122,7 +148,7 @@ class TourControllerTest extends TestCase
     }
 
     /** @test */
-    public function test_tours_by_travel_slug_with_price_to_filter(): void
+    public function tours_by_travel_slug_with_price_to_filter(): void
     {
         $tour = Tour::factory()->create(['price' => 250]);
 
@@ -139,7 +165,7 @@ class TourControllerTest extends TestCase
     }
 
     /** @test */
-    public function test_tours_by_travel_slug_with_date_from_filter(): void
+    public function tours_by_travel_slug_with_date_from_filter(): void
     {
         $travel = Travel::factory()->create(['visibility' => TravelVisibilityEnum::PUBLIC]);
         $tour = Tour::factory()->create(['travelId' => $travel->id, 'startingDate' => '2022-01-01']);
@@ -156,7 +182,7 @@ class TourControllerTest extends TestCase
     }
 
     /** @test */
-    public function test_tours_by_travel_slug_with_date_to_filter(): void
+    public function tours_by_travel_slug_with_date_to_filter(): void
     {
         $travel = Travel::factory()->create(['visibility' => TravelVisibilityEnum::PUBLIC]);
         $tour = Tour::factory()->create(['travelId' => $travel->id, 'startingDate' => '2022-01-01']);
@@ -173,7 +199,7 @@ class TourControllerTest extends TestCase
     }
 
     /** @test */
-    public function test_tours_by_travel_slug_with_sort_by_and_sort_order(): void
+    public function tours_by_travel_slug_with_sort_by_and_sort_order(): void
     {
         $travel = Travel::factory()->create(['visibility' => TravelVisibilityEnum::PUBLIC]);
         $tour1 = Tour::factory()->create(['travelId' => $travel->id, 'price' => '100']);
@@ -188,7 +214,7 @@ class TourControllerTest extends TestCase
     }
 
     /** @test */
-    public function test_tours_pagination(): void
+    public function tours_pagination(): void
     {
         $paginateSize = (int) config('myconstants.tours.paginate');
 

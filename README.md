@@ -20,11 +20,26 @@ Follow these steps to install the project:
 2. Install dependencies: `composer update`
 3. Copy the `.env.example` file to a new file named `.env` and modify the environment variables as needed
 4. Start the container using sail: `./vendor/bin/sail up`
-5. Run database migrations and initial seeders: `./vendor/bin/sail artisan migrate:fresh --seed`
-6. Generate API documentation using the command: `./vendor/bin/sail artisan scribe:generate`
-7. Access the generated API documentation at `http://localhost:${APP_PORT}/docs`
-8. Run static code analysis: `sail php ./vendor/bin/phpstan analyse --memory-limit=2G`
-9. Check code style: `sail php ./vendor/bin/pint --test`
+5. Create symbolic link for storage `php artisan storage:link`
+6. Run database migrations and initial seeders: `./vendor/bin/sail artisan migrate:fresh --seed`
+
+## Initial data
+The seeders insert:
+
+- Role and Permission models
+- Admin user with email admin@example.com and editor user with email editor@example.com
+- Travels from the sample file
+- Tours from the sample file
+
+> Use one of the two usernames above to log in, password = 'password'.
+
+## Utility
+
+- Generate API documentation using the command: `./vendor/bin/sail artisan scribe:generate`
+- Access the generated API documentation at `http://localhost:${APP_PORT}/docs`
+- Run static code analysis: `sail php ./vendor/bin/phpstan analyse --memory-limit=2G`
+- Check code style: `sail php ./vendor/bin/pint --test`
+- Run tests `sail artisan test`
 
 ## Usage
 

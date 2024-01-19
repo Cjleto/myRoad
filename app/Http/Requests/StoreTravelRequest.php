@@ -41,6 +41,10 @@ class StoreTravelRequest extends FormRequest
                 'max:1000',
                 new MoodsExistsRule,
             ],
+            'images.*' => [
+                'nullable',
+                'file'
+            ],
         ];
     }
 
@@ -49,6 +53,15 @@ class StoreTravelRequest extends FormRequest
         return [
             'visibility.*' => 'The visibility field is required and must be one of: '.implode(', ', TravelVisibilityEnum::getAllValues()),
         ];
+    }
+
+    public function prepareForValidation()
+    {
+
+        // check format of moods and force to array
+        $this->merge([
+            'moods' => json_decode(str_replace("'","\"",$this->moods), true, 512, JSON_THROW_ON_ERROR),
+        ]);
     }
 
     public function bodyParameters()
@@ -70,10 +83,8 @@ class StoreTravelRequest extends FormRequest
                 'description' => 'The visibility of the travel (public or private)',
                 'example' => 'public',
             ],
-            'moods' => [
-                'description' => 'The moods of the travel',
-                'example' => '{"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}',
-            ],
+
+
         ];
     }
 }

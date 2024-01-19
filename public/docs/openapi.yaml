@@ -49,12 +49,12 @@ paths:
               properties:
                 email:
                   type: string
-                  description: 'The email of the user.'
+                  description: 'The email of the user.<br>Use editor/admin@example.com for different permissions<br>'
                   example: admin@example.com
                 password:
                   type: string
                   description: 'The password of the user.'
-                  example: "password\n\nuse editor@example.com and password for different permissions"
+                  example: password
               required:
                 - email
                 - password
@@ -65,7 +65,47 @@ paths:
       operationId: storeANewTour
       description: ''
       parameters: []
-      responses: {  }
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  data:
+                    id: 9b20f8e0-b615-4090-8702-e8bf7adedc82
+                    travelId: 4f4bd032-e7d4-402a-bdf6-aaf6be240d53
+                    name: ITICE20211107
+                    startingDate: '2021-11-07'
+                    endingDate: '2021-11-15'
+                    price: 213
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 9b20f8e0-b615-4090-8702-e8bf7adedc82
+                      travelId:
+                        type: string
+                        example: 4f4bd032-e7d4-402a-bdf6-aaf6be240d53
+                      name:
+                        type: string
+                        example: ITICE20211107
+                      startingDate:
+                        type: string
+                        example: '2021-11-07'
+                      endingDate:
+                        type: string
+                        example: '2021-11-15'
+                      price:
+                        type: integer
+                        example: 213
       tags:
         - 'Tour Endpoints'
       requestBody:
@@ -177,103 +217,99 @@ paths:
                 example:
                   data:
                     -
-                      id: 9b1ef570-7910-4cff-b26d-677da3fdd9f9
+                      id: 7f0ff8cc-6b19-407e-9915-279ad76c0b5c
                       travelId: cbf304ae-a335-43fa-9e56-811612dcb601
-                      name: ITUNI20240101
-                      startingDate: '2024-01-01'
-                      endingDate: '2024-01-08'
-                      price: 1000
+                      name: ITUNI20240112
+                      startingDate: '2024-01-12'
+                      endingDate: '2024-01-20'
+                      price: 1899
                     -
                       id: 90155d92-01e5-4c4b-a5a8-e24011fa8418
                       travelId: cbf304ae-a335-43fa-9e56-811612dcb601
                       name: ITUNI20240121
                       startingDate: '2024-01-21'
                       endingDate: '2024-01-28'
-                      price: 1799
+                      price: 1899
                   links:
-                    first: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=1'
-                    last: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=2'
+                    first: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?sortBy=price&sortOrder=desc&priceFrom=10&page=1'
+                    last: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?sortBy=price&sortOrder=desc&priceFrom=10&page=1'
                     prev: null
-                    next: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=2'
+                    next: null
                   meta:
                     current_page: 1
                     from: 1
-                    last_page: 2
+                    last_page: 1
                     links:
                       -
                         url: null
                         label: '&laquo; Previous'
                         active: false
                       -
-                        url: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=1'
+                        url: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?sortBy=price&sortOrder=desc&priceFrom=10&page=1'
                         label: '1'
                         active: true
                       -
-                        url: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=2'
-                        label: '2'
-                        active: false
-                      -
-                        url: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=2'
+                        url: null
                         label: 'Next &raquo;'
                         active: false
                     path: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours'
                     per_page: 2
                     to: 2
-                    total: 4
+                    total: 2
                 properties:
                   data:
                     type: array
                     example:
                       -
-                        id: 9b1ef570-7910-4cff-b26d-677da3fdd9f9
+                        id: 7f0ff8cc-6b19-407e-9915-279ad76c0b5c
                         travelId: cbf304ae-a335-43fa-9e56-811612dcb601
-                        name: ITUNI20240101
-                        startingDate: '2024-01-01'
-                        endingDate: '2024-01-08'
-                        price: 1000
+                        name: ITUNI20240112
+                        startingDate: '2024-01-12'
+                        endingDate: '2024-01-20'
+                        price: 1899
                       -
                         id: 90155d92-01e5-4c4b-a5a8-e24011fa8418
                         travelId: cbf304ae-a335-43fa-9e56-811612dcb601
                         name: ITUNI20240121
                         startingDate: '2024-01-21'
                         endingDate: '2024-01-28'
-                        price: 1799
+                        price: 1899
                     items:
                       type: object
                       properties:
                         id:
                           type: string
-                          example: 9b1ef570-7910-4cff-b26d-677da3fdd9f9
+                          example: 7f0ff8cc-6b19-407e-9915-279ad76c0b5c
                         travelId:
                           type: string
                           example: cbf304ae-a335-43fa-9e56-811612dcb601
                         name:
                           type: string
-                          example: ITUNI20240101
+                          example: ITUNI20240112
                         startingDate:
                           type: string
-                          example: '2024-01-01'
+                          example: '2024-01-12'
                         endingDate:
                           type: string
-                          example: '2024-01-08'
+                          example: '2024-01-20'
                         price:
                           type: integer
-                          example: 1000
+                          example: 1899
                   links:
                     type: object
                     properties:
                       first:
                         type: string
-                        example: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=1'
+                        example: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?sortBy=price&sortOrder=desc&priceFrom=10&page=1'
                       last:
                         type: string
-                        example: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=2'
+                        example: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?sortBy=price&sortOrder=desc&priceFrom=10&page=1'
                       prev:
                         type: string
                         example: null
                       next:
                         type: string
-                        example: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=2'
+                        example: null
                   meta:
                     type: object
                     properties:
@@ -285,7 +321,7 @@ paths:
                         example: 1
                       last_page:
                         type: integer
-                        example: 2
+                        example: 1
                       links:
                         type: array
                         example:
@@ -294,15 +330,11 @@ paths:
                             label: '&laquo; Previous'
                             active: false
                           -
-                            url: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=1'
+                            url: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?sortBy=price&sortOrder=desc&priceFrom=10&page=1'
                             label: '1'
                             active: true
                           -
-                            url: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=2'
-                            label: '2'
-                            active: false
-                          -
-                            url: 'http://localhost:8009/api/v1/travel/united-arab-emirates-from-dubai-to-abu-dhabi/tours?priceFrom=100&priceTo=10000&dateFrom=2024-01-01&dateTo=2024-12-31&sortBy=price&sortOrder=asc&page=2'
+                            url: null
                             label: 'Next &raquo;'
                             active: false
                         items:
@@ -328,7 +360,7 @@ paths:
                         example: 2
                       total:
                         type: integer
-                        example: 4
+                        example: 2
       tags:
         - 'Tour Endpoints'
     parameters:
@@ -350,10 +382,106 @@ paths:
         201:
           description: ''
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-                example: "{\n\"data\": {\n  \"id\": \"9b1bff16-e089-41de-8d4f-9e87f9014139\",\n  \"name\": \"Jordan 360\",\n  \"slug\": \"jordan-360\",\n  \"description\": \"Jordan 360°: the perfect tour to....\",\n  \"numberOfDays\": 8,\n  \"numberOfNight\": 7,\n  \"moods\": {\n      \"nature\": 80,\n      \"relax\": 20,\n      \"history\": 90,\n      \"culture\": 30,\n      \"party\": 10\n  }\n}"
+                type: object
+                example:
+                  success: true
+                  data:
+                    id: 9b20f41b-0c51-4cc1-aa08-5c076876b356
+                    name: 'new trrascve'
+                    slug: new-trrascve-9
+                    description: 'new descriptrioin asdkj haskjdh jaksd'
+                    numberOfDays: 4
+                    numberOfNight: 3
+                    moods:
+                      nature: 80
+                      relax: 20
+                      history: 90
+                      culture: 30
+                      party: 10
+                    images:
+                      -
+                        url: 'http://localhost:8009/storage/9/Screenshot-2024-01-16-alle-13.01.46.png'
+                        name: 'Screenshot 2024-01-16 alle 13.01.46'
+                        size: 170087
+                        mime_type: image/png
+                      -
+                        url: 'http://localhost:8009/storage/10/Screenshot-2023-12-07-alle-16.10.03.png'
+                        name: 'Screenshot 2023-12-07 alle 16.10.03'
+                        size: 88690
+                        mime_type: image/png
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 9b20f41b-0c51-4cc1-aa08-5c076876b356
+                      name:
+                        type: string
+                        example: 'new trrascve'
+                      slug:
+                        type: string
+                        example: new-trrascve-9
+                      description:
+                        type: string
+                        example: 'new descriptrioin asdkj haskjdh jaksd'
+                      numberOfDays:
+                        type: integer
+                        example: 4
+                      numberOfNight:
+                        type: integer
+                        example: 3
+                      moods:
+                        type: object
+                        properties:
+                          nature:
+                            type: integer
+                            example: 80
+                          relax:
+                            type: integer
+                            example: 20
+                          history:
+                            type: integer
+                            example: 90
+                          culture:
+                            type: integer
+                            example: 30
+                          party:
+                            type: integer
+                            example: 10
+                      images:
+                        type: array
+                        example:
+                          -
+                            url: 'http://localhost:8009/storage/9/Screenshot-2024-01-16-alle-13.01.46.png'
+                            name: 'Screenshot 2024-01-16 alle 13.01.46'
+                            size: 170087
+                            mime_type: image/png
+                          -
+                            url: 'http://localhost:8009/storage/10/Screenshot-2023-12-07-alle-16.10.03.png'
+                            name: 'Screenshot 2023-12-07 alle 16.10.03'
+                            size: 88690
+                            mime_type: image/png
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              example: 'http://localhost:8009/storage/9/Screenshot-2024-01-16-alle-13.01.46.png'
+                            name:
+                              type: string
+                              example: 'Screenshot 2024-01-16 alle 13.01.46'
+                            size:
+                              type: integer
+                              example: 170087
+                            mime_type:
+                              type: string
+                              example: image/png
       tags:
         - 'Travel Endpoints'
       requestBody:
@@ -385,7 +513,13 @@ paths:
                 moods:
                   type: string
                   description: 'The moods of the travel.'
-                  example: '{"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}'
+                  example: "{'nature': 80,'relax': 20,'history': 90,'culture': 30,'party': 10}"
+                images:
+                  type: array
+                  description: 'List of file.'
+                  items:
+                    type: string
+                    format: binary
               required:
                 - name
                 - description
@@ -398,7 +532,110 @@ paths:
       operationId: updateATravel
       description: 'Update a travel'
       parameters: []
-      responses: {  }
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  data:
+                    id: 9b20f41b-0c51-4cc1-aa08-5c076876b356
+                    name: 'new trrascve'
+                    slug: new-trrascve-9
+                    description: 'new descriptrioin asdkj haskjdh jaksd'
+                    numberOfDays: 4
+                    numberOfNight: 3
+                    moods:
+                      nature: 80
+                      relax: 20
+                      history: 90
+                      culture: 30
+                      party: 10
+                    images:
+                      -
+                        url: 'http://localhost:8009/storage/9/Screenshot-2024-01-16-alle-13.01.46.png'
+                        name: 'Screenshot 2024-01-16 alle 13.01.46'
+                        size: 170087
+                        mime_type: image/png
+                      -
+                        url: 'http://localhost:8009/storage/10/Screenshot-2023-12-07-alle-16.10.03.png'
+                        name: 'Screenshot 2023-12-07 alle 16.10.03'
+                        size: 88690
+                        mime_type: image/png
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 9b20f41b-0c51-4cc1-aa08-5c076876b356
+                      name:
+                        type: string
+                        example: 'new trrascve'
+                      slug:
+                        type: string
+                        example: new-trrascve-9
+                      description:
+                        type: string
+                        example: 'new descriptrioin asdkj haskjdh jaksd'
+                      numberOfDays:
+                        type: integer
+                        example: 4
+                      numberOfNight:
+                        type: integer
+                        example: 3
+                      moods:
+                        type: object
+                        properties:
+                          nature:
+                            type: integer
+                            example: 80
+                          relax:
+                            type: integer
+                            example: 20
+                          history:
+                            type: integer
+                            example: 90
+                          culture:
+                            type: integer
+                            example: 30
+                          party:
+                            type: integer
+                            example: 10
+                      images:
+                        type: array
+                        example:
+                          -
+                            url: 'http://localhost:8009/storage/9/Screenshot-2024-01-16-alle-13.01.46.png'
+                            name: 'Screenshot 2024-01-16 alle 13.01.46'
+                            size: 170087
+                            mime_type: image/png
+                          -
+                            url: 'http://localhost:8009/storage/10/Screenshot-2023-12-07-alle-16.10.03.png'
+                            name: 'Screenshot 2023-12-07 alle 16.10.03'
+                            size: 88690
+                            mime_type: image/png
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              example: 'http://localhost:8009/storage/9/Screenshot-2024-01-16-alle-13.01.46.png'
+                            name:
+                              type: string
+                              example: 'Screenshot 2024-01-16 alle 13.01.46'
+                            size:
+                              type: integer
+                              example: 170087
+                            mime_type:
+                              type: string
+                              example: image/png
       tags:
         - 'Travel Endpoints'
       requestBody:
@@ -430,7 +667,13 @@ paths:
                 moods:
                   type: string
                   description: 'The moods of the travel.'
-                  example: '{"nature": 80,"relax": 20,"history": 90,"culture": 30,"party": 10}'
+                  example: "{'nature': 80,'relax': 20,'history': 90,'culture': 30,'party': 10}"
+                images:
+                  type: array
+                  description: 'List of file. It will replace all the existing images'
+                  items:
+                    type: string
+                    format: binary
               required:
                 - name
                 - description

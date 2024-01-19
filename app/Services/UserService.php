@@ -45,4 +45,9 @@ class UserService
             ])->save();
         }
     }
+
+    public function isAdmin (User $user): bool
+    {
+        return $user->role->name === 'admin';
+    }
 }
