@@ -63,7 +63,8 @@ class TourService
         }
     }
 
-    public function getToursByTravelSlug (Travel $travel, Request $request): LengthAwarePaginator    {
+    public function getToursByTravelSlug(Travel $travel, Request $request): LengthAwarePaginator
+    {
         $tours = $travel->tours()
             ->when($request->has('priceFrom'), function ($query) use ($request) {
                 $query->where('price', '>=', (int) $request->input('priceFrom') * 100);

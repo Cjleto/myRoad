@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\DB;
 
 class TravelService extends BaseService
 {
-
     public function create(StoreTravelRequest $request): mixed
     {
 

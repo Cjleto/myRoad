@@ -2,20 +2,16 @@
 
 namespace Tests\Feature\Api\V1;
 
-use Carbon\Carbon;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-use App\Models\Tour;
-use App\Models\User;
-use App\Models\Travel;
-use App\Models\Permission;
-use Laravel\Sanctum\Sanctum;
-use Illuminate\Support\Facades\DB;
 use App\Enums\TravelVisibilityEnum;
+use App\Models\Tour;
+use App\Models\Travel;
+use App\Models\User;
+use Carbon\Carbon;
+use Laravel\Sanctum\Sanctum;
+use Tests\TestCase;
 
 class TourTest extends TestCase
 {
-
     /**
      * @test
      */
@@ -29,13 +25,13 @@ class TourTest extends TestCase
 
         $travel = Travel::factory()->create(['visibility' => TravelVisibilityEnum::PUBLIC]);
 
-        $startingDate = "2024-11-05";
+        $startingDate = '2024-11-05';
         $endingDate = Carbon::parse($startingDate)->addDays($travel->numberOfDays)->format('Y-m-d');
 
         $data = [
             'travelId' => $travel->id,
-            "startingDate" => $startingDate,
-            "endingDate" => $endingDate,
+            'startingDate' => $startingDate,
+            'endingDate' => $endingDate,
             'price' => 300,
         ];
 
@@ -45,16 +41,16 @@ class TourTest extends TestCase
 
         $response->assertStatus(201);
         $response->assertJsonFragment([
-                'travelId' => $travel->id,
-                'price' => 300,
-                'startingDate' => '2024-11-05',
-                'endingDate' => $endingDate,
-            ]);
+            'travelId' => $travel->id,
+            'price' => 300,
+            'startingDate' => '2024-11-05',
+            'endingDate' => $endingDate,
+        ]);
 
         $this->assertDatabaseHas('tours', [
             'travelId' => $travel->id,
-            "startingDate" => $startingDate,
-            "endingDate" => $endingDate,
+            'startingDate' => $startingDate,
+            'endingDate' => $endingDate,
             'price' => 300 * 100,
         ]);
     }
@@ -69,13 +65,13 @@ class TourTest extends TestCase
 
         $travel = Travel::factory()->create(['visibility' => TravelVisibilityEnum::PUBLIC]);
 
-        $startingDate = "2024-11-05";
+        $startingDate = '2024-11-05';
         $endingDate = Carbon::parse($startingDate)->addDays($travel->numberOfDays)->format('Y-m-d');
 
         $data = [
             'travelId' => $travel->id,
-            "startingDate" => $startingDate,
-            "endingDate" => $endingDate,
+            'startingDate' => $startingDate,
+            'endingDate' => $endingDate,
             'price' => 300,
         ];
 
@@ -96,12 +92,12 @@ class TourTest extends TestCase
         $response = $this->get(route('tours_by_travel_slug', [$travel]));
 
         $response->assertStatus(200)
-        ->assertJsonCount(1, 'data')
-        ->assertJsonFragment([
-            'id' => $tour->id,
-            'travelId' => $travel->id,
-            'price' => 11111111,
-        ]);
+            ->assertJsonCount(1, 'data')
+            ->assertJsonFragment([
+                'id' => $tour->id,
+                'travelId' => $travel->id,
+                'price' => 11111111,
+            ]);
 
         $travel->update(['visibility' => TravelVisibilityEnum::PRIVATE]);
 
@@ -122,12 +118,12 @@ class TourTest extends TestCase
         $response = $this->get('/api/v1/travel/'.$travel->slug.'/tours');
 
         $response->assertStatus(200)
-        ->assertJsonCount(1, 'data')
-        ->assertJsonFragment([
-            'id' => $tour->id,
-            'travelId' => $travel->id,
-            'price' => 11111111,
-        ]);
+            ->assertJsonCount(1, 'data')
+            ->assertJsonFragment([
+                'id' => $tour->id,
+                'travelId' => $travel->id,
+                'price' => 11111111,
+            ]);
     }
 
     /** @test */
@@ -139,12 +135,12 @@ class TourTest extends TestCase
         $response = $this->get('/api/v1/travel/'.$travel->slug.'/tours?priceFrom=50');
 
         $response->assertStatus(200)
-        ->assertJsonCount(1, 'data')
-        ->assertJsonFragment([
-            'id' => $tour->id,
-            'travelId' => $travel->id,
-            'price' => 100,
-        ]);
+            ->assertJsonCount(1, 'data')
+            ->assertJsonFragment([
+                'id' => $tour->id,
+                'travelId' => $travel->id,
+                'price' => 100,
+            ]);
     }
 
     /** @test */
@@ -156,12 +152,12 @@ class TourTest extends TestCase
         $response = $this->get('/api/v1/travel/'.$travel->slug.'/tours?priceTo=260');
 
         $response->assertStatus(200)
-        ->assertJsonCount(1, 'data')
-        ->assertJsonFragment([
-            'id' => $tour->id,
-            'travelId' => $travel->id,
-            'price' => 250,
-        ]);
+            ->assertJsonCount(1, 'data')
+            ->assertJsonFragment([
+                'id' => $tour->id,
+                'travelId' => $travel->id,
+                'price' => 250,
+            ]);
     }
 
     /** @test */
@@ -173,12 +169,12 @@ class TourTest extends TestCase
         $response = $this->get('/api/v1/travel/'.$travel->slug.'/tours?dateFrom=2022-01-01');
 
         $response->assertStatus(200)
-        ->assertJsonCount(1, 'data')
-        ->assertJsonFragment([
-            'id' => $tour->id,
-            'travelId' => $travel->id,
-            'startingDate' => '2022-01-01',
-        ]);
+            ->assertJsonCount(1, 'data')
+            ->assertJsonFragment([
+                'id' => $tour->id,
+                'travelId' => $travel->id,
+                'startingDate' => '2022-01-01',
+            ]);
     }
 
     /** @test */
@@ -190,12 +186,12 @@ class TourTest extends TestCase
         $response = $this->get('/api/v1/travel/'.$travel->slug.'/tours?dateTo=2022-01-01');
 
         $response->assertStatus(200)
-        ->assertJsonCount(1, 'data')
-        ->assertJsonFragment([
-            'id' => $tour->id,
-            'travelId' => $travel->id,
-            'startingDate' => '2022-01-01',
-        ]);
+            ->assertJsonCount(1, 'data')
+            ->assertJsonFragment([
+                'id' => $tour->id,
+                'travelId' => $travel->id,
+                'startingDate' => '2022-01-01',
+            ]);
     }
 
     /** @test */
@@ -208,9 +204,9 @@ class TourTest extends TestCase
         $response = $this->get('/api/v1/travel/'.$travel->slug.'/tours?sortBy=price&sortOrder=desc');
 
         $response->assertStatus(200)
-        ->assertJsonCount(2, 'data')
-        ->assertJsonPath('data.0.id', $tour2->id)
-        ->assertJsonPath('data.1.id', $tour1->id);
+            ->assertJsonCount(2, 'data')
+            ->assertJsonPath('data.0.id', $tour2->id)
+            ->assertJsonPath('data.1.id', $tour1->id);
     }
 
     /** @test */
@@ -225,9 +221,9 @@ class TourTest extends TestCase
         $response = $this->get('/api/v1/travel/'.$travel->slug.'/tours?page=2');
 
         $response->assertStatus(200)
-        ->assertJsonCount(1, 'data')
-        ->assertJsonPath('meta.current_page', 2)
-        ->assertJsonPath('meta.per_page', $paginateSize)
-        ->assertJsonPath('meta.last_page', 2);
+            ->assertJsonCount(1, 'data')
+            ->assertJsonPath('meta.current_page', 2)
+            ->assertJsonPath('meta.per_page', $paginateSize)
+            ->assertJsonPath('meta.last_page', 2);
     }
 }

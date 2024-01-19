@@ -2,19 +2,17 @@
 
 namespace Tests\Feature\Api\V1;
 
-use Tests\TestCase;
 use App\Models\Mood;
-use App\Models\Role;
-use App\Models\User;
-use App\Models\Travel;
 use App\Models\Permission;
-use Laravel\Sanctum\Sanctum;
+use App\Models\Travel;
+use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Sanctum\Sanctum;
+use Tests\TestCase;
 
 class TravelTest extends TestCase
 {
-
     /** @test */
     public function user_without_permission_cannot_create_travel(): void
     {
@@ -69,7 +67,7 @@ class TravelTest extends TestCase
                 'description',
                 'numberOfDays',
                 'numberOfNight',
-                'moods'
+                'moods',
             ],
         ]);
 
@@ -100,7 +98,7 @@ class TravelTest extends TestCase
         $updatedTravelData['moods'] = json_encode(['testHappiness' => 7]);
 
         // Send a PUT request to the update endpoint with the updated travel data
-        $response = $this->actingAs($user)->put(route('admin.travels.update',[$travel]), $updatedTravelData);
+        $response = $this->actingAs($user)->put(route('admin.travels.update', [$travel]), $updatedTravelData);
 
         // Assert that the response has a 200 status code
         $response->assertStatus(200);
@@ -114,7 +112,7 @@ class TravelTest extends TestCase
                 'description',
                 'numberOfDays',
                 'numberOfNight',
-                'moods'
+                'moods',
             ],
         ]);
 
@@ -165,9 +163,9 @@ class TravelTest extends TestCase
 
         // check for each media if it exists in storage
         foreach ($media as $image) {
-            Storage::disk('public')->assertExists($image->id . '/' . $image->file_name);
+            Storage::disk('public')->assertExists($image->id.'/'.$image->file_name);
             // delete image from storage
-            Storage::disk('public')->delete($image->id . '/' . $image->file_name);
+            Storage::disk('public')->delete($image->id.'/'.$image->file_name);
         }
 
     }

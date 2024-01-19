@@ -68,7 +68,6 @@ class TravelController extends Controller
     public function store(StoreTravelRequest $request)
     {
 
-
         if (! auth()->user()->tokenCan('can_create_travels')) {
             return $this->failure(CustomException::unauthorized('You are not authorized to create travels'), 403);
         }

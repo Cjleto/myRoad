@@ -43,7 +43,7 @@ class StoreTravelRequest extends FormRequest
             ],
             'images.*' => [
                 'nullable',
-                'file'
+                'file',
             ],
         ];
     }
@@ -60,7 +60,7 @@ class StoreTravelRequest extends FormRequest
 
         // check format of moods and force to array
         $this->merge([
-            'moods' => json_decode(str_replace("'","\"",$this->moods), true, 512, JSON_THROW_ON_ERROR),
+            'moods' => json_decode(str_replace("'", '"', $this->moods), true, 512, JSON_THROW_ON_ERROR),
         ]);
     }
 
@@ -83,7 +83,6 @@ class StoreTravelRequest extends FormRequest
                 'description' => 'The visibility of the travel (public or private)',
                 'example' => 'public',
             ],
-
 
         ];
     }

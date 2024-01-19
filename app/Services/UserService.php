@@ -46,7 +46,7 @@ class UserService
         }
     }
 
-    public function isAdmin (User $user): bool
+    public function isAdmin(User $user): bool
     {
         return $user->role->name === 'admin';
     }

@@ -23,7 +23,7 @@ class TravelResource extends JsonResource
             'moods' => $this->whenLoaded('moods', function () {
                 return $this->flat($this->moods);
             }),
-            'images'  => $this->getMedia('images')->map(function ($item) {
+            'images' => $this->getMedia('images')->map(function ($item) {
                 return [
                     'url' => $item->getFullUrl(),
                     'name' => $item->name,

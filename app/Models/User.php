@@ -48,10 +48,9 @@ class User extends Authenticatable
 
     public $incrementing = false;
 
-    ## Relationships ##
+    //# Relationships ##
     public function role(): HasOne
     {
         return $this->hasOne(Role::class, 'id', 'roleId');
     }
-
 }

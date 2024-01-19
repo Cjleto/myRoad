@@ -57,7 +57,7 @@ class UpdateTravelRequest extends FormRequest
             ],
             'images.*' => [
                 'nullable',
-                'file'
+                'file',
             ],
         ];
     }
@@ -71,7 +71,7 @@ class UpdateTravelRequest extends FormRequest
     {
         // check format of moods and force to array
         $this->merge([
-            'moods' => json_decode(str_replace("'","\"",$this->moods), true, 512, JSON_THROW_ON_ERROR),
+            'moods' => json_decode(str_replace("'", '"', $this->moods), true, 512, JSON_THROW_ON_ERROR),
         ]);
     }
 
