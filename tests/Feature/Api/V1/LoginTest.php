@@ -1,19 +1,10 @@
 <?php
 
-namespace Tests\Feature\Api\V1;
-
 use App\Models\User;
-use Tests\TestCase;
 
-class LoginTest extends TestCase
-{
-    /**
-     * Test login with correct credentials.
-     *
-     * @return void
-     */
-    public function test_login_with_correct_credentials()
-    {
+
+describe('login', function(){
+    test('login with correct credentials', function () {
         $user = User::factory()->create(['roleId' => 1]);
 
         $response = $this->post(route('login'), [
@@ -27,16 +18,9 @@ class LoginTest extends TestCase
                 'token',
             ],
         ]);
+    });
 
-    }
-
-    /**
-     * Test login with incorrect credentials.
-     *
-     * @return void
-     */
-    public function test_login_with_incorrect_credentials()
-    {
+    test('login with incorrect credentials', function () {
         $user = User::factory()->create([
             'email' => 'test@example.com',
             'password' => 'wrongpassword',
@@ -48,5 +32,7 @@ class LoginTest extends TestCase
         ]);
 
         $response->assertStatus(401);
-    }
-}
+
+    });
+
+});
