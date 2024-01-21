@@ -5,12 +5,12 @@ namespace App\Console\Commands;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Console\Command;
-use function Laravel\Prompts\text;
+
+use function Laravel\Prompts\confirm;
 use function Laravel\Prompts\password;
 use function Laravel\Prompts\select;
-use function Laravel\Prompts\confirm;
 use function Laravel\Prompts\table;
-
+use function Laravel\Prompts\text;
 
 class UserCreate extends Command
 {
@@ -58,21 +58,21 @@ class UserCreate extends Command
         );
 
         $role = select(
-            label: 'What role should the user '. $email.' have?',
+            label: 'What role should the user '.$email.' have?',
             options: config('myconstants.initial_roles'),
             default: 'admin',
             hint: 'The role may be changed at any time.'
         );
 
         $confirmed = confirm(
-            label: 'Are you sure you want to create the user '. $email.' with '. $role . ' role?',
+            label: 'Are you sure you want to create the user '.$email.' with '.$role.' role?',
             default: false,
             yes: 'I accept',
             no: 'I decline',
             hint: 'Please confirm to continue.'
         );
 
-        if($confirmed){
+        if ($confirmed) {
 
             $password = password(
                 label: 'What is your password?',
@@ -93,12 +93,11 @@ class UserCreate extends Command
             table(
                 ['Name', 'Email', 'Role'],
                 [
-                    [$name, $email, $role]
+                    [$name, $email, $role],
                 ],
             );
 
         }
-
 
     }
 
