@@ -2,8 +2,7 @@
 
 use App\Models\User;
 
-
-describe('login', function(){
+describe('login', function () {
     test('login with correct credentials', function () {
         $user = User::factory()->create(['roleId' => 1]);
 

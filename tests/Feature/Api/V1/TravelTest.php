@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Mood;
-use App\Models\Permission;
 use App\Models\Travel;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
@@ -158,4 +157,3 @@ test('a photo can be added to a travel', function () {
         Storage::disk('public')->delete($image->id.'/'.$image->file_name);
     }
 });
-

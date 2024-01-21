@@ -41,8 +41,8 @@ What seeders insert:
 ## Utility 
 - Generate API documentation using the command: `./vendor/bin/sail artisan scribe:generate`
 - Access the generated API documentation at `http://localhost:${APP_PORT}/docs`
-- Run static code analysis: `./vendor/bin/sail ./vendor/bin/phpstan analyse --memory-limit=2G`
-- Check code style: `./vendor/bin/sail ./vendor/bin/pint --test`
+- Run static code analysis: `./vendor/bin/sail php ./vendor/bin/phpstan analyse --memory-limit=2G`
+- Check code style: `./vendor/bin/sail php ./vendor/bin/pint --test`
 - Run tests `./vendor/bin/sail artisan test`
 
 ## Usage
