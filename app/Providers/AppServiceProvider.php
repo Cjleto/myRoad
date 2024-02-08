@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Travel;
+use App\Observers\TravelObserver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
@@ -21,5 +23,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::shouldBeStrict();
+
+        Travel::observe(TravelObserver::class);
     }
 }
