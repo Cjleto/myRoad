@@ -71,7 +71,7 @@ class TravelService extends BaseService
 
             $travel->update($fillableData);
 
-            if (request()->has('moods')) {
+            if ($request->has('moods')) {
                 foreach ($request->moods as $moodName => $moodValue) {
                     $mood = Mood::where('name', $moodName)->first();
                     if ($mood) {

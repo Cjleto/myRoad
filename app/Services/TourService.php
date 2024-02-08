@@ -2,16 +2,19 @@
 
 namespace App\Services;
 
-use App\Exceptions\CustomException;
-use App\Http\Requests\StoreTourRequest;
+use Carbon\Carbon;
 use App\Models\Tour;
 use App\Models\Travel;
-use Carbon\Carbon;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
+use App\Exceptions\CustomException;
+use Illuminate\Support\Facades\Cache;
+use App\Http\Requests\StoreTourRequest;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use App\Traits\CacheHandler;
 
 class TourService
 {
+    use CacheHandler;
     public function paginate(): mixed
     {
         $tours = Tour::simplePaginate(config('myconstants.tours.paginate') ?? 3);
@@ -65,7 +68,12 @@ class TourService
 
     public function getToursByTravelSlug(Travel $travel, Request $request): LengthAwarePaginator
     {
-        $tours = $travel->tours()
+
+        $rememberKey = $this->getCacheKeyFromRequest($request);
+
+        return Cache::remember($rememberKey, 150, function () use ($request, $travel, $rememberKey) {
+
+            $tours = $travel->tours()
             ->when($request->has('priceFrom'), function ($query) use ($request) {
                 $query->where('price', '>=', (int) $request->input('priceFrom') * 100);
             })
@@ -82,10 +90,16 @@ class TourService
                 $query->orderBy($request->input('sortBy'), $request->input('sortOrder'));
             });
 
-        $tours = $tours->orderBy('startingDate')
-            ->paginate(config('myconstants.tours.paginate'))
-            ->withQueryString();
+            $tours = $tours->orderBy('startingDate')
+                ->paginate(config('myconstants.tours.paginate'))
+                ->withQueryString();
 
-        return $tours;
+            info('put in cache: '.$rememberKey);
+
+            return $tours;
+        });
+
+
+
     }
 }
