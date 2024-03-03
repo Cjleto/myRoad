@@ -2,10 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Services\TravelService;
 use Closure;
 use Illuminate\Http\Request;
+use App\Services\TravelService;
 use Symfony\Component\HttpFoundation\Response;
+use App\Exceptions\Travel\TravelIsNotPublicException;
 
 class TravelIsPublic
 {
@@ -21,7 +22,8 @@ class TravelIsPublic
     {
 
         if (!TravelService::checkPublic($request->travel)) {
-            return response()->json(['message' => 'Travel is not public'], 403);
+            throw new TravelIsNotPublicException();
+            /* return response()->json(['message' => 'Travel is not public'], 403); */
         }
 
         return $next($request);
