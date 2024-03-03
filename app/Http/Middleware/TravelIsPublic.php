@@ -9,6 +9,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TravelIsPublic
 {
+
+
+
     /**
      * Handle an incoming request.
      *
@@ -17,7 +20,7 @@ class TravelIsPublic
     public function handle(Request $request, Closure $next): Response
     {
 
-        if (TravelService::checkPublic($request->travel) === false) {
+        if (!TravelService::checkPublic($request->travel)) {
             return response()->json(['message' => 'Travel is not public'], 403);
         }
 

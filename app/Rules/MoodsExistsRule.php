@@ -15,11 +15,11 @@ class MoodsExistsRule implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        foreach (array_keys($value) as $moodName) {
+        $moodNames = array_keys($value);
+        $existingMoods = Mood::whereIn('name', $moodNames)->get();
 
-            $mood = Mood::where('name', $moodName)->first();
-
-            if (! $mood) {
+        foreach ($moodNames as $moodName) {
+            if (!$existingMoods->contains('name', $moodName)) {
                 $fail("The mood {$moodName} does not exist.");
             }
         }
