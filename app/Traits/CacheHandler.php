@@ -38,9 +38,25 @@ trait CacheHandler
 
     public function clearCacheContainingKey(string $rememberKey): void
     {
+
+        // get cache driver
+        $cacheDriver = config('cache.default');
+
+        info('cache driver: '.$cacheDriver);
+
+        if ($cacheDriver == 'redis') {
+            $this->clearRedisCacheContainingKey($rememberKey);
+        } else {
+            $this->clearLaravelCacheContainingKey($rememberKey);
+        }
+
+    }
+
+    public function clearRedisCacheContainingKey ($rememberKey)
+    {
         $keys = Redis::connection('cache')->keys('*'.$rememberKey.':*');
 
-        info($keys);
+        info('REDIS cache keys: '.json_encode($keys));
 
         foreach ($keys as $key) {
 
@@ -48,6 +64,21 @@ trait CacheHandler
             info('deleting key: '.$key);
 
             Cache::forget($key);
+        }
+    }
+
+    public function clearLaravelCacheContainingKey($rememberKey)
+    {
+
+        $keys = Cache::store('file')->get('cache-keys', []);
+
+        info('ARRAY cache keys: '.json_encode($keys));
+
+        foreach ($keys as $key) {
+            if (strpos($key, $rememberKey) !== false) {
+                info('deleting key: '.$key);
+                Cache::forget($key);
+            }
         }
     }
 }
