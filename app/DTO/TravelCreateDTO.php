@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Traits\ObjectToArray;
 use App\Enums\TravelVisibilityEnum;
 
-class TravelCreateDTO
+class CreateTravelDTO
 {
     use ObjectToArray;
 
@@ -20,7 +20,7 @@ class TravelCreateDTO
     )
     {}
 
-    public static function fromRequest(Request $request): TravelCreateDTO
+    public static function fromRequest(Request $request): CreateTravelDTO
     {
 
         return new self(
@@ -33,7 +33,7 @@ class TravelCreateDTO
         );
     }
 
-    public static function fromArray(array $data): TravelCreateDTO
+    public static function fromArray(array $data): CreateTravelDTO
     {
 
         return new self(

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\DTO\TravelDTO;
 use App\Models\Travel;
-use App\DTO\TravelCreateDTO;
+use App\DTO\CreateTravelDTO;
 use App\Services\TravelService;
 use App\Exceptions\CustomException;
 use App\Http\Controllers\Controller;
@@ -74,9 +74,9 @@ class TravelController extends Controller
             return $this->failure(CustomException::unauthorized('You are not authorized to create travels'), 403);
         }
 
-        $travelCreateDto = TravelCreateDTO::fromRequest($request);
+        $createTravelDTO = CreateTravelDTO::fromRequest($request);
 
-        $travel = $this->travelService->create($travelCreateDto);
+        $travel = $this->travelService->create($createTravelDTO);
         $travel->load('moods');
 
         return $this->success(new TravelResource($travel), 201);
@@ -141,9 +141,9 @@ class TravelController extends Controller
             return $this->failure(CustomException::unauthorized('You are not authorized to update travels'), 403);
         }
 
-        $travelCreateDTO = TravelCreateDTO::fromRequest($request);
+        $createTravelDTO = CreateTravelDTO::fromRequest($request);
 
-        $travel = $this->travelService->update($travelCreateDTO, $travel);
+        $travel = $this->travelService->update($createTravelDTO, $travel);
         $travel->load('moods');
 
         return $this->success(new TravelResource($travel));
