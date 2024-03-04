@@ -17,7 +17,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: password
           MYSQL_DATABASE: myroad
         ports:
           - 3306:3306
@@ -61,7 +61,9 @@ jobs:
     - name: Run tests
       env:
         DB_CONNECTION: mysql
+        DB_HOST: 127.0.0.1
+        DB_PORT: 3306
         DB_DATABASE: myroad
-        DB_USER: sail
+        DB_USERNAME: root
         DB_PASSWORD: password
       run: php artisan test
