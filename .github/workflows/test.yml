@@ -41,7 +41,7 @@ jobs:
         coverage: none
 
     - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      run: php -r "file_exists('ci.env') || copy('ci.env', '.env');"
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
