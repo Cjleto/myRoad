@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\TravelVisibilityEnum;
+use App\Exceptions\Travel\TravelIsNotPublicException;
 use App\Models\Tour;
 use App\Models\Travel;
 use App\Models\User;
@@ -90,7 +91,7 @@ test('tours by travel slug return only active travels', function () {
 
     $response->assertStatus(403)
         ->assertJson([
-            'message' => 'Travel is not public',
+            'message' => TravelIsNotPublicException::ERROR_MESSAGE,
         ]);
 });
 

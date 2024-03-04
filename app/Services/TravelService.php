@@ -2,22 +2,24 @@
 
 namespace App\Services;
 
-use App\Enums\TravelVisibilityEnum;
-use App\Exceptions\TravelAlreadyExistsException;
-use App\Http\Requests\StoreTravelRequest;
-use App\Http\Requests\UpdateTravelRequest;
 use App\Models\Mood;
+use App\DTO\TravelDTO;
 use App\Models\Travel;
-use Illuminate\Foundation\Http\FormRequest;
+use App\DTO\CreateTravelDTO;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Enums\TravelVisibilityEnum;
+use App\Http\Requests\StoreTravelRequest;
+use App\Http\Requests\UpdateTravelRequest;
+use Illuminate\Foundation\Http\FormRequest;
+use App\Exceptions\TravelAlreadyExistsException;
 
 class TravelService extends BaseService
 {
-    public function create(StoreTravelRequest $request): mixed
+    public function create(CreateTravelDTO $createTravelDTO): Travel
     {
 
-        $travelExists = self::checkTravelAlreadyExists($request);
+        $travelExists = self::checkTravelAlreadyExists($createTravelDTO);
 
         if ($travelExists) {
             throw new TravelAlreadyExistsException('Travel already exists');
@@ -25,20 +27,18 @@ class TravelService extends BaseService
 
         DB::beginTransaction();
 
-        $fillableData = self::getFillableAttributes($request);
-
         try {
-            $travel = Travel::create($fillableData);
+            $travel = Travel::create($createTravelDTO->getTravelFields());
 
-            foreach ($request->moods as $moodName => $moodValue) {
+            foreach ($createTravelDTO->moods as $moodName => $moodValue) {
                 $mood = Mood::where('name', $moodName)->first();
                 if ($mood) {
                     $travel->moods()->attach($mood->id, ['value' => $moodValue]);
                 }
             }
 
-            if ($images = $request->file('images')) {
-                foreach ($images as $image) {
+            if (is_countable($createTravelDTO->images)) {
+                foreach ($createTravelDTO->images as $image) {
                     $travel->addMedia($image)->toMediaCollection('images');
                 }
             }
@@ -51,7 +51,7 @@ class TravelService extends BaseService
             activity()
                 ->useLog('travel-store')
                 ->causedBy(auth()->user())
-                ->withProperties(['attributes' => $request->all(), 'exception' => $e->getMessage()])
+                ->withProperties(['attributes' => $createTravelDTO, 'exception' => $e->getMessage()])
                 ->log('Error while creating travel');
 
             throw $e;
@@ -60,19 +60,17 @@ class TravelService extends BaseService
         return $travel;
     }
 
-    public function update(UpdateTravelRequest $request, Travel $travel): Travel
+    public function update(CreateTravelDTO $createTravelDTO, Travel $travel): Travel
     {
 
         DB::beginTransaction();
 
         try {
 
-            $fillableData = self::getFillableAttributes($request);
+            $travel->update($createTravelDTO->getTravelFields());
 
-            $travel->update($fillableData);
-
-            if ($request->has('moods')) {
-                foreach ($request->moods as $moodName => $moodValue) {
+            if(count($createTravelDTO->moods) > 0){
+                foreach ($createTravelDTO->moods as $moodName => $moodValue) {
                     $mood = Mood::where('name', $moodName)->first();
                     if ($mood) {
                         $travel->moods()->syncWithoutDetaching([$mood->id => ['value' => $moodValue]]);
@@ -80,9 +78,9 @@ class TravelService extends BaseService
                 }
             }
 
-            if ($images = $request->file('images')) {
+            if(is_countable($createTravelDTO->images)){
                 $travel->clearMediaCollection('images');
-                foreach ($images as $image) {
+                foreach ($createTravelDTO->images as $image) {
                     $travel->addMedia($image)->toMediaCollection('images');
                 }
             }
@@ -95,7 +93,7 @@ class TravelService extends BaseService
             activity()
                 ->useLog('travel-update')
                 ->causedBy(auth()->user())
-                ->withProperties(['attributes' => $request->all(), 'exception' => $e->getMessage()])
+                ->withProperties(['attributes' => $createTravelDTO->toArray(), 'exception' => $e->getMessage()])
                 ->log('Error while updating travel');
 
             throw $e;
@@ -104,24 +102,17 @@ class TravelService extends BaseService
         return $travel;
     }
 
-    private function checkTravelAlreadyExists($data)
+    private function checkTravelAlreadyExists(CreateTravelDTO $data)
     {
 
         if (! config('myconstants.travels.unique_name')) {
             return false;
         }
 
-        // if $data is an instance of StoreTravelRequest
-        if ($data instanceof StoreTravelRequest) {
-            $data = $data->validated();
-        } else {
-            $data = (array) $data;
-        }
+        $travel = Travel::where('name', $data->name)
+            ->exists();
 
-        $travel = Travel::where('name', $data['name'])
-            ->first();
-
-        return boolval($travel);
+        return $travel;
 
     }
 

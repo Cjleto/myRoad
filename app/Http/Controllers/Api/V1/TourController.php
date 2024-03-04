@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\DTO\TravelDTO;
 use App\Exceptions\CustomException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTourRequest;
