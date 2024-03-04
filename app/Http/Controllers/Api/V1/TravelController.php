@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\DTO\TravelDTO;
 use App\Models\Travel;
 use App\DTO\CreateTravelDTO;
 use App\Services\TravelService;
