@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Actions\ToursByTravelSlugAction;
 use App\DTO\TravelDTO;
 use App\Exceptions\CustomException;
 use App\Http\Controllers\Controller;
@@ -80,10 +81,10 @@ class TourController extends Controller
      *    }
      *}
      */
-    public function toursByTravelSlug(Travel $travel, TourListRequest $request)
+    public function toursByTravelSlug(Travel $travel, TourListRequest $request, ToursByTravelSlugAction $toursByTravelSlugAction)
     {
 
-        $tours = $this->tourService->getToursByTravelSlug($travel, $request);
+        $tours = $toursByTravelSlugAction->execute($travel, $request);
 
         return TourResource::collection($tours);
     }
