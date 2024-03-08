@@ -27,7 +27,7 @@ Route::middleware(['auth:sanctum'])->prefix('admin')->name('admin.')->group(func
 
 });
 
-Route::get('travel/{travel:slug}/tours', [ToursByTravelSlugController::class, 'toursByTravelSlug'])
+Route::get('travel/{travel:slug}/tours', ToursByTravelSlugController::class)
     ->middleware(['travel.is.public'])
     ->name('tours_by_travel_slug');
 
