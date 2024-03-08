@@ -5,7 +5,7 @@ namespace App\DTO;
 use App\Models\Travel;
 use App\Enums\TravelVisibilityEnum;
 
-class TravelDTO
+readonly class TravelDTO
 {
     public function __construct(
         public string $id,

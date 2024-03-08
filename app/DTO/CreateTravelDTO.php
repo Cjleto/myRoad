@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Traits\ObjectToArray;
 use App\Enums\TravelVisibilityEnum;
 
-class CreateTravelDTO
+readonly class CreateTravelDTO
 {
     use ObjectToArray;
 
