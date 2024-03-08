@@ -73,9 +73,8 @@ class ToursByTravelSlugController extends Controller
      *    }
      *}
      */
-    public function toursByTravelSlug(Travel $travel, TourListRequest $request, ToursByTravelSlugAction $toursByTravelSlugAction)
+    public function __invoke(Travel $travel, TourListRequest $request, ToursByTravelSlugAction $toursByTravelSlugAction)
     {
-
         $tours = $toursByTravelSlugAction->execute($travel, $request);
 
         return TourResource::collection($tours);

@@ -2,11 +2,17 @@
 
 namespace App\Actions;
 
+use App\Filters\SortBy;
+use App\Filters\Travels\ByDateFrom;
+use App\Filters\Travels\ByDateTo;
 use App\Models\Travel;
 use App\Traits\CacheHandler;
-use App\Services\TourService;
 use Illuminate\Http\Request;
+use App\Services\TourService;
+use App\Filters\Travels\ByPriceTo;
+use App\Filters\Travels\ByPriceFrom;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Pipeline;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class ToursByTravelSlugAction
@@ -22,26 +28,27 @@ class ToursByTravelSlugAction
     {
         $rememberKey = $this->getCacheKeyFromRequest($request);
 
-        return Cache::remember($rememberKey, 150, function () use ($request, $travel, $rememberKey) {
+        $pipeline = [
 
-            $tours = $travel->tours()
-            ->when($request->has('priceFrom'), function ($query) use ($request) {
-                $query->where('price', '>=', (int) $request->input('priceFrom') * 100);
-            })
-            ->when($request->has('priceTo'), function ($query) use ($request) {
-                $query->where('price', '<=', (int) $request->input('priceTo') * 100);
-            })
-            ->when($request->has('dateFrom'), function ($query) use ($request) {
-                $query->whereDate('startingDate', '>=', $request->input('dateFrom'));
-            })
-            ->when($request->has('dateTo'), function ($query) use ($request) {
-                $query->whereDate('startingDate', '<=', $request->input('dateTo'));
-            })
-            ->when($request->has('sortBy') && $request->has('sortOrder'), function ($query) use ($request) {
-                $query->orderBy($request->input('sortBy'), $request->input('sortOrder'));
-            });
+        ];
 
-            $tours = $tours->orderBy('startingDate')
+        return Cache::remember($rememberKey, 1, function () use ($request, $travel, $rememberKey) {
+
+            $pipeline = [
+                ByPriceFrom::class,
+                ByPriceTo::class,
+                ByDateFrom::class,
+                ByDateTo::class,
+                new SortBy($request->input('sortBy'), $request->input('sortOrder'))
+            ];
+
+            $tours = Pipeline::send(
+                    $travel->tours()
+                        ->getQuery()
+                )
+                ->through($pipeline)
+                ->thenReturn()
+                ->orderBy('startingDate')
                 ->paginate(config('myconstants.tours.paginate'))
                 ->withQueryString();
 
