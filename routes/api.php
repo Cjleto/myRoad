@@ -3,6 +3,7 @@
 use App\Exceptions\RouteNotFound;
 use App\Http\Controllers\Api\V1\LoginController;
 use App\Http\Controllers\Api\V1\TourController;
+use App\Http\Controllers\Api\V1\ToursByTravelSlugController;
 use App\Http\Controllers\Api\V1\TravelController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,7 @@ Route::middleware(['auth:sanctum'])->prefix('admin')->name('admin.')->group(func
 
 });
 
-Route::get('travel/{travel:slug}/tours', [TourController::class, 'toursByTravelSlug'])
+Route::get('travel/{travel:slug}/tours', [ToursByTravelSlugController::class, 'toursByTravelSlug'])
     ->middleware(['travel.is.public'])
     ->name('tours_by_travel_slug');
 
