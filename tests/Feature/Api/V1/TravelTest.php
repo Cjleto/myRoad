@@ -131,7 +131,7 @@ test('a photo can be added to a travel', function () {
     $travelData['moods'] = json_encode(['testHappiness' => 5]);
 
     $response = $this->post(
-        route('admin.travels.store', $travelData),
+        route('admin.travels.stores', $travelData),
         [
             $travelData,
             'images' => [
