@@ -67,7 +67,7 @@ test('user without permission cannot create tour', function () {
 
     $response->assertStatus(403);
     $response->assertJson([
-        'message' => 'You are not authorized to create tourssss',
+        'message' => 'You are not authorized to create tours',
     ]);
 });
 
